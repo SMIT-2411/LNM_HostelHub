@@ -1,0 +1,769 @@
+// !$*UTF8*$!
+{
+	archiveVersion = 1;
+	classes = {
+	};
+	objectVersion = 56;
+	objects = {
+
+/* Begin PBXBuildFile section */
+		3A6401EB2B0B65B4005224B0 /* UserDetailsFormView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3A6401EA2B0B65B4005224B0 /* UserDetailsFormView.swift */; };
+		3A80E4192AF919D900B852E8 /* FirebaseAnalytics in Frameworks */ = {isa = PBXBuildFile; productRef = 3A80E4182AF919D900B852E8 /* FirebaseAnalytics */; };
+		3A80E41B2AF919D900B852E8 /* FirebaseAuth in Frameworks */ = {isa = PBXBuildFile; productRef = 3A80E41A2AF919D900B852E8 /* FirebaseAuth */; };
+		3A80E41D2AF919D900B852E8 /* FirebaseDatabase in Frameworks */ = {isa = PBXBuildFile; productRef = 3A80E41C2AF919D900B852E8 /* FirebaseDatabase */; };
+		3A80E41F2AF919D900B852E8 /* FirebaseFirestore in Frameworks */ = {isa = PBXBuildFile; productRef = 3A80E41E2AF919D900B852E8 /* FirebaseFirestore */; };
+		3A80E4212AF919D900B852E8 /* FirebaseFirestoreSwift in Frameworks */ = {isa = PBXBuildFile; productRef = 3A80E4202AF919D900B852E8 /* FirebaseFirestoreSwift */; };
+		3A80E4232AF919D900B852E8 /* FirebaseStorage in Frameworks */ = {isa = PBXBuildFile; productRef = 3A80E4222AF919D900B852E8 /* FirebaseStorage */; };
+		3A80E4252AF91A3F00B852E8 /* Booking.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3A80E4242AF91A3F00B852E8 /* Booking.swift */; };
+		3A80E4272AF91A6200B852E8 /* BookingRequest.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3A80E4262AF91A6200B852E8 /* BookingRequest.swift */; };
+		3A80E4292AF91A7A00B852E8 /* Complaint.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3A80E4282AF91A7A00B852E8 /* Complaint.swift */; };
+		3A80E42B2AF91A9C00B852E8 /* Room.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3A80E42A2AF91A9C00B852E8 /* Room.swift */; };
+		3A80E42D2AF91AB300B852E8 /* SignIn_withGoogle.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3A80E42C2AF91AB300B852E8 /* SignIn_withGoogle.swift */; };
+		3A80E42F2AF91B3700B852E8 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 3A80E42E2AF91B3700B852E8 /* GoogleService-Info.plist */; };
+		3A80E4332AF91B9E00B852E8 /* GoogleSignIn in Frameworks */ = {isa = PBXBuildFile; productRef = 3A80E4322AF91B9E00B852E8 /* GoogleSignIn */; };
+		3A80E4352AF91B9E00B852E8 /* GoogleSignInSwift in Frameworks */ = {isa = PBXBuildFile; productRef = 3A80E4342AF91B9E00B852E8 /* GoogleSignInSwift */; };
+		3A80E4372AF91BCE00B852E8 /* Application_utility.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3A80E4362AF91BCE00B852E8 /* Application_utility.swift */; };
+		3A80E4392AF91E8000B852E8 /* AdminDashboardView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3A80E4382AF91E8000B852E8 /* AdminDashboardView.swift */; };
+		3A80E43B2AF91E9000B852E8 /* AvailableRoomsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3A80E43A2AF91E9000B852E8 /* AvailableRoomsView.swift */; };
+		3A80E43D2AF91EA100B852E8 /* BookingDetailsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3A80E43C2AF91EA100B852E8 /* BookingDetailsView.swift */; };
+		3A80E43F2AF91EAF00B852E8 /* BookingView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3A80E43E2AF91EAF00B852E8 /* BookingView.swift */; };
+		3A80E4412AF91EBA00B852E8 /* ComplaintView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3A80E4402AF91EBA00B852E8 /* ComplaintView.swift */; };
+		3A80E4432AF91EC500B852E8 /* LoginView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3A80E4422AF91EC500B852E8 /* LoginView.swift */; };
+		3A80E4452AF91EE700B852E8 /* UserDashboardView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3A80E4442AF91EE700B852E8 /* UserDashboardView.swift */; };
+		3A80E4472AF91F7500B852E8 /* RegistrationView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3A80E4462AF91F7500B852E8 /* RegistrationView.swift */; };
+		3AE9B8A82AF91178007DC90C /* LNM_HostelHubApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3AE9B8A72AF91178007DC90C /* LNM_HostelHubApp.swift */; };
+		3AE9B8AA2AF91178007DC90C /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3AE9B8A92AF91178007DC90C /* ContentView.swift */; };
+		3AE9B8AC2AF9117A007DC90C /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 3AE9B8AB2AF9117A007DC90C /* Assets.xcassets */; };
+		3AE9B8AF2AF9117A007DC90C /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 3AE9B8AE2AF9117A007DC90C /* Preview Assets.xcassets */; };
+		3AE9B8B92AF9117A007DC90C /* LNM_HostelHubTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3AE9B8B82AF9117A007DC90C /* LNM_HostelHubTests.swift */; };
+		3AE9B8C32AF9117A007DC90C /* LNM_HostelHubUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3AE9B8C22AF9117A007DC90C /* LNM_HostelHubUITests.swift */; };
+		3AE9B8C52AF9117A007DC90C /* LNM_HostelHubUITestsLaunchTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3AE9B8C42AF9117A007DC90C /* LNM_HostelHubUITestsLaunchTests.swift */; };
+/* End PBXBuildFile section */
+
+/* Begin PBXContainerItemProxy section */
+		3AE9B8B52AF9117A007DC90C /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 3AE9B89C2AF91178007DC90C /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = 3AE9B8A32AF91178007DC90C;
+			remoteInfo = LNM_HostelHub;
+		};
+		3AE9B8BF2AF9117A007DC90C /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 3AE9B89C2AF91178007DC90C /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = 3AE9B8A32AF91178007DC90C;
+			remoteInfo = LNM_HostelHub;
+		};
+/* End PBXContainerItemProxy section */
+
+/* Begin PBXFileReference section */
+		3A6401EA2B0B65B4005224B0 /* UserDetailsFormView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserDetailsFormView.swift; sourceTree = "<group>"; };
+		3A80E4242AF91A3F00B852E8 /* Booking.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Booking.swift; sourceTree = "<group>"; };
+		3A80E4262AF91A6200B852E8 /* BookingRequest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BookingRequest.swift; sourceTree = "<group>"; };
+		3A80E4282AF91A7A00B852E8 /* Complaint.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Complaint.swift; sourceTree = "<group>"; };
+		3A80E42A2AF91A9C00B852E8 /* Room.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Room.swift; sourceTree = "<group>"; };
+		3A80E42C2AF91AB300B852E8 /* SignIn_withGoogle.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignIn_withGoogle.swift; sourceTree = "<group>"; };
+		3A80E42E2AF91B3700B852E8 /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
+		3A80E4302AF91B5600B852E8 /* LNM-HostelHub-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist; path = "LNM-HostelHub-Info.plist"; sourceTree = SOURCE_ROOT; };
+		3A80E4362AF91BCE00B852E8 /* Application_utility.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Application_utility.swift; sourceTree = "<group>"; };
+		3A80E4382AF91E8000B852E8 /* AdminDashboardView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AdminDashboardView.swift; sourceTree = "<group>"; };
+		3A80E43A2AF91E9000B852E8 /* AvailableRoomsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AvailableRoomsView.swift; sourceTree = "<group>"; };
+		3A80E43C2AF91EA100B852E8 /* BookingDetailsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BookingDetailsView.swift; sourceTree = "<group>"; };
+		3A80E43E2AF91EAF00B852E8 /* BookingView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BookingView.swift; sourceTree = "<group>"; };
+		3A80E4402AF91EBA00B852E8 /* ComplaintView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ComplaintView.swift; sourceTree = "<group>"; };
+		3A80E4422AF91EC500B852E8 /* LoginView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginView.swift; sourceTree = "<group>"; };
+		3A80E4442AF91EE700B852E8 /* UserDashboardView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserDashboardView.swift; sourceTree = "<group>"; };
+		3A80E4462AF91F7500B852E8 /* RegistrationView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RegistrationView.swift; sourceTree = "<group>"; };
+		3AE9B8A42AF91178007DC90C /* LNM_HostelHub.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = LNM_HostelHub.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		3AE9B8A72AF91178007DC90C /* LNM_HostelHubApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LNM_HostelHubApp.swift; sourceTree = "<group>"; };
+		3AE9B8A92AF91178007DC90C /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
+		3AE9B8AB2AF9117A007DC90C /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
+		3AE9B8AE2AF9117A007DC90C /* Preview Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = "Preview Assets.xcassets"; sourceTree = "<group>"; };
+		3AE9B8B42AF9117A007DC90C /* LNM_HostelHubTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = LNM_HostelHubTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
+		3AE9B8B82AF9117A007DC90C /* LNM_HostelHubTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LNM_HostelHubTests.swift; sourceTree = "<group>"; };
+		3AE9B8BE2AF9117A007DC90C /* LNM_HostelHubUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = LNM_HostelHubUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
+		3AE9B8C22AF9117A007DC90C /* LNM_HostelHubUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LNM_HostelHubUITests.swift; sourceTree = "<group>"; };
+		3AE9B8C42AF9117A007DC90C /* LNM_HostelHubUITestsLaunchTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LNM_HostelHubUITestsLaunchTests.swift; sourceTree = "<group>"; };
+/* End PBXFileReference section */
+
+/* Begin PBXFrameworksBuildPhase section */
+		3AE9B8A12AF91178007DC90C /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				3A80E4212AF919D900B852E8 /* FirebaseFirestoreSwift in Frameworks */,
+				3A80E41D2AF919D900B852E8 /* FirebaseDatabase in Frameworks */,
+				3A80E41F2AF919D900B852E8 /* FirebaseFirestore in Frameworks */,
+				3A80E4352AF91B9E00B852E8 /* GoogleSignInSwift in Frameworks */,
+				3A80E4192AF919D900B852E8 /* FirebaseAnalytics in Frameworks */,
+				3A80E41B2AF919D900B852E8 /* FirebaseAuth in Frameworks */,
+				3A80E4232AF919D900B852E8 /* FirebaseStorage in Frameworks */,
+				3A80E4332AF91B9E00B852E8 /* GoogleSignIn in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		3AE9B8B12AF9117A007DC90C /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		3AE9B8BB2AF9117A007DC90C /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXFrameworksBuildPhase section */
+
+/* Begin PBXGroup section */
+		3AE9B89B2AF91178007DC90C = {
+			isa = PBXGroup;
+			children = (
+				3AE9B8A62AF91178007DC90C /* LNM_HostelHub */,
+				3AE9B8B72AF9117A007DC90C /* LNM_HostelHubTests */,
+				3AE9B8C12AF9117A007DC90C /* LNM_HostelHubUITests */,
+				3AE9B8A52AF91178007DC90C /* Products */,
+			);
+			sourceTree = "<group>";
+		};
+		3AE9B8A52AF91178007DC90C /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				3AE9B8A42AF91178007DC90C /* LNM_HostelHub.app */,
+				3AE9B8B42AF9117A007DC90C /* LNM_HostelHubTests.xctest */,
+				3AE9B8BE2AF9117A007DC90C /* LNM_HostelHubUITests.xctest */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
+		3AE9B8A62AF91178007DC90C /* LNM_HostelHub */ = {
+			isa = PBXGroup;
+			children = (
+				3A80E4302AF91B5600B852E8 /* LNM-HostelHub-Info.plist */,
+				3A80E42E2AF91B3700B852E8 /* GoogleService-Info.plist */,
+				3AE9B8D22AF911A9007DC90C /* Models */,
+				3AE9B8D12AF91196007DC90C /* Views */,
+				3AE9B8A72AF91178007DC90C /* LNM_HostelHubApp.swift */,
+				3AE9B8A92AF91178007DC90C /* ContentView.swift */,
+				3AE9B8AB2AF9117A007DC90C /* Assets.xcassets */,
+				3AE9B8AD2AF9117A007DC90C /* Preview Content */,
+			);
+			path = LNM_HostelHub;
+			sourceTree = "<group>";
+		};
+		3AE9B8AD2AF9117A007DC90C /* Preview Content */ = {
+			isa = PBXGroup;
+			children = (
+				3AE9B8AE2AF9117A007DC90C /* Preview Assets.xcassets */,
+			);
+			path = "Preview Content";
+			sourceTree = "<group>";
+		};
+		3AE9B8B72AF9117A007DC90C /* LNM_HostelHubTests */ = {
+			isa = PBXGroup;
+			children = (
+				3AE9B8B82AF9117A007DC90C /* LNM_HostelHubTests.swift */,
+			);
+			path = LNM_HostelHubTests;
+			sourceTree = "<group>";
+		};
+		3AE9B8C12AF9117A007DC90C /* LNM_HostelHubUITests */ = {
+			isa = PBXGroup;
+			children = (
+				3AE9B8C22AF9117A007DC90C /* LNM_HostelHubUITests.swift */,
+				3AE9B8C42AF9117A007DC90C /* LNM_HostelHubUITestsLaunchTests.swift */,
+			);
+			path = LNM_HostelHubUITests;
+			sourceTree = "<group>";
+		};
+		3AE9B8D12AF91196007DC90C /* Views */ = {
+			isa = PBXGroup;
+			children = (
+				3A80E4382AF91E8000B852E8 /* AdminDashboardView.swift */,
+				3A80E43A2AF91E9000B852E8 /* AvailableRoomsView.swift */,
+				3A80E43C2AF91EA100B852E8 /* BookingDetailsView.swift */,
+				3A80E43E2AF91EAF00B852E8 /* BookingView.swift */,
+				3A80E4402AF91EBA00B852E8 /* ComplaintView.swift */,
+				3A80E4422AF91EC500B852E8 /* LoginView.swift */,
+				3A80E4442AF91EE700B852E8 /* UserDashboardView.swift */,
+				3A80E4462AF91F7500B852E8 /* RegistrationView.swift */,
+				3A6401EA2B0B65B4005224B0 /* UserDetailsFormView.swift */,
+			);
+			path = Views;
+			sourceTree = "<group>";
+		};
+		3AE9B8D22AF911A9007DC90C /* Models */ = {
+			isa = PBXGroup;
+			children = (
+				3A80E4242AF91A3F00B852E8 /* Booking.swift */,
+				3A80E4262AF91A6200B852E8 /* BookingRequest.swift */,
+				3A80E4282AF91A7A00B852E8 /* Complaint.swift */,
+				3A80E42A2AF91A9C00B852E8 /* Room.swift */,
+				3A80E42C2AF91AB300B852E8 /* SignIn_withGoogle.swift */,
+				3A80E4362AF91BCE00B852E8 /* Application_utility.swift */,
+			);
+			path = Models;
+			sourceTree = "<group>";
+		};
+/* End PBXGroup section */
+
+/* Begin PBXNativeTarget section */
+		3AE9B8A32AF91178007DC90C /* LNM_HostelHub */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 3AE9B8C82AF9117A007DC90C /* Build configuration list for PBXNativeTarget "LNM_HostelHub" */;
+			buildPhases = (
+				3AE9B8A02AF91178007DC90C /* Sources */,
+				3AE9B8A12AF91178007DC90C /* Frameworks */,
+				3AE9B8A22AF91178007DC90C /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = LNM_HostelHub;
+			packageProductDependencies = (
+				3A80E4182AF919D900B852E8 /* FirebaseAnalytics */,
+				3A80E41A2AF919D900B852E8 /* FirebaseAuth */,
+				3A80E41C2AF919D900B852E8 /* FirebaseDatabase */,
+				3A80E41E2AF919D900B852E8 /* FirebaseFirestore */,
+				3A80E4202AF919D900B852E8 /* FirebaseFirestoreSwift */,
+				3A80E4222AF919D900B852E8 /* FirebaseStorage */,
+				3A80E4322AF91B9E00B852E8 /* GoogleSignIn */,
+				3A80E4342AF91B9E00B852E8 /* GoogleSignInSwift */,
+			);
+			productName = LNM_HostelHub;
+			productReference = 3AE9B8A42AF91178007DC90C /* LNM_HostelHub.app */;
+			productType = "com.apple.product-type.application";
+		};
+		3AE9B8B32AF9117A007DC90C /* LNM_HostelHubTests */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 3AE9B8CB2AF9117A007DC90C /* Build configuration list for PBXNativeTarget "LNM_HostelHubTests" */;
+			buildPhases = (
+				3AE9B8B02AF9117A007DC90C /* Sources */,
+				3AE9B8B12AF9117A007DC90C /* Frameworks */,
+				3AE9B8B22AF9117A007DC90C /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				3AE9B8B62AF9117A007DC90C /* PBXTargetDependency */,
+			);
+			name = LNM_HostelHubTests;
+			productName = LNM_HostelHubTests;
+			productReference = 3AE9B8B42AF9117A007DC90C /* LNM_HostelHubTests.xctest */;
+			productType = "com.apple.product-type.bundle.unit-test";
+		};
+		3AE9B8BD2AF9117A007DC90C /* LNM_HostelHubUITests */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 3AE9B8CE2AF9117A007DC90C /* Build configuration list for PBXNativeTarget "LNM_HostelHubUITests" */;
+			buildPhases = (
+				3AE9B8BA2AF9117A007DC90C /* Sources */,
+				3AE9B8BB2AF9117A007DC90C /* Frameworks */,
+				3AE9B8BC2AF9117A007DC90C /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				3AE9B8C02AF9117A007DC90C /* PBXTargetDependency */,
+			);
+			name = LNM_HostelHubUITests;
+			productName = LNM_HostelHubUITests;
+			productReference = 3AE9B8BE2AF9117A007DC90C /* LNM_HostelHubUITests.xctest */;
+			productType = "com.apple.product-type.bundle.ui-testing";
+		};
+/* End PBXNativeTarget section */
+
+/* Begin PBXProject section */
+		3AE9B89C2AF91178007DC90C /* Project object */ = {
+			isa = PBXProject;
+			attributes = {
+				BuildIndependentTargetsInParallel = 1;
+				LastSwiftUpdateCheck = 1500;
+				LastUpgradeCheck = 1500;
+				TargetAttributes = {
+					3AE9B8A32AF91178007DC90C = {
+						CreatedOnToolsVersion = 15.0.1;
+					};
+					3AE9B8B32AF9117A007DC90C = {
+						CreatedOnToolsVersion = 15.0.1;
+						TestTargetID = 3AE9B8A32AF91178007DC90C;
+					};
+					3AE9B8BD2AF9117A007DC90C = {
+						CreatedOnToolsVersion = 15.0.1;
+						TestTargetID = 3AE9B8A32AF91178007DC90C;
+					};
+				};
+			};
+			buildConfigurationList = 3AE9B89F2AF91178007DC90C /* Build configuration list for PBXProject "LNM_HostelHub" */;
+			compatibilityVersion = "Xcode 14.0";
+			developmentRegion = en;
+			hasScannedForEncodings = 0;
+			knownRegions = (
+				en,
+				Base,
+			);
+			mainGroup = 3AE9B89B2AF91178007DC90C;
+			packageReferences = (
+				3A80E4172AF919D900B852E8 /* XCRemoteSwiftPackageReference "firebase-ios-sdk" */,
+				3A80E4312AF91B9E00B852E8 /* XCRemoteSwiftPackageReference "GoogleSignIn-iOS" */,
+			);
+			productRefGroup = 3AE9B8A52AF91178007DC90C /* Products */;
+			projectDirPath = "";
+			projectRoot = "";
+			targets = (
+				3AE9B8A32AF91178007DC90C /* LNM_HostelHub */,
+				3AE9B8B32AF9117A007DC90C /* LNM_HostelHubTests */,
+				3AE9B8BD2AF9117A007DC90C /* LNM_HostelHubUITests */,
+			);
+		};
+/* End PBXProject section */
+
+/* Begin PBXResourcesBuildPhase section */
+		3AE9B8A22AF91178007DC90C /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				3AE9B8AF2AF9117A007DC90C /* Preview Assets.xcassets in Resources */,
+				3AE9B8AC2AF9117A007DC90C /* Assets.xcassets in Resources */,
+				3A80E42F2AF91B3700B852E8 /* GoogleService-Info.plist in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		3AE9B8B22AF9117A007DC90C /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		3AE9B8BC2AF9117A007DC90C /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXResourcesBuildPhase section */
+
+/* Begin PBXSourcesBuildPhase section */
+		3AE9B8A02AF91178007DC90C /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				3A80E43F2AF91EAF00B852E8 /* BookingView.swift in Sources */,
+				3AE9B8AA2AF91178007DC90C /* ContentView.swift in Sources */,
+				3A6401EB2B0B65B4005224B0 /* UserDetailsFormView.swift in Sources */,
+				3A80E4272AF91A6200B852E8 /* BookingRequest.swift in Sources */,
+				3A80E4392AF91E8000B852E8 /* AdminDashboardView.swift in Sources */,
+				3A80E42B2AF91A9C00B852E8 /* Room.swift in Sources */,
+				3A80E4372AF91BCE00B852E8 /* Application_utility.swift in Sources */,
+				3A80E42D2AF91AB300B852E8 /* SignIn_withGoogle.swift in Sources */,
+				3A80E4472AF91F7500B852E8 /* RegistrationView.swift in Sources */,
+				3A80E4292AF91A7A00B852E8 /* Complaint.swift in Sources */,
+				3A80E4432AF91EC500B852E8 /* LoginView.swift in Sources */,
+				3A80E4412AF91EBA00B852E8 /* ComplaintView.swift in Sources */,
+				3A80E4252AF91A3F00B852E8 /* Booking.swift in Sources */,
+				3A80E43D2AF91EA100B852E8 /* BookingDetailsView.swift in Sources */,
+				3A80E4452AF91EE700B852E8 /* UserDashboardView.swift in Sources */,
+				3AE9B8A82AF91178007DC90C /* LNM_HostelHubApp.swift in Sources */,
+				3A80E43B2AF91E9000B852E8 /* AvailableRoomsView.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		3AE9B8B02AF9117A007DC90C /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				3AE9B8B92AF9117A007DC90C /* LNM_HostelHubTests.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		3AE9B8BA2AF9117A007DC90C /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				3AE9B8C32AF9117A007DC90C /* LNM_HostelHubUITests.swift in Sources */,
+				3AE9B8C52AF9117A007DC90C /* LNM_HostelHubUITestsLaunchTests.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXSourcesBuildPhase section */
+
+/* Begin PBXTargetDependency section */
+		3AE9B8B62AF9117A007DC90C /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = 3AE9B8A32AF91178007DC90C /* LNM_HostelHub */;
+			targetProxy = 3AE9B8B52AF9117A007DC90C /* PBXContainerItemProxy */;
+		};
+		3AE9B8C02AF9117A007DC90C /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = 3AE9B8A32AF91178007DC90C /* LNM_HostelHub */;
+			targetProxy = 3AE9B8BF2AF9117A007DC90C /* PBXContainerItemProxy */;
+		};
+/* End PBXTargetDependency section */
+
+/* Begin XCBuildConfiguration section */
+		3AE9B8C62AF9117A007DC90C /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				ASSETCATALOG_COMPILER_GENERATE_SWIFT_ASSET_SYMBOL_EXTENSIONS = YES;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++20";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_ENABLE_OBJC_WEAK = YES;
+				CLANG_WARN_BLOCK_CAPTURE_AUTORELEASING = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_COMMA = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DEPRECATED_OBJC_IMPLEMENTATIONS = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
+				CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = YES;
+				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_QUOTED_INCLUDE_IN_FRAMEWORK_HEADER = YES;
+				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
+				CLANG_WARN_STRICT_PROTOTYPES = YES;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
+				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = dwarf;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				ENABLE_TESTABILITY = YES;
+				ENABLE_USER_SCRIPT_SANDBOXING = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu17;
+				GCC_DYNAMIC_NO_PIC = NO;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"DEBUG=1",
+					"$(inherited)",
+				);
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 17.0;
+				LOCALIZATION_PREFERS_STRING_CATALOGS = YES;
+				MTL_ENABLE_DEBUG_INFO = INCLUDE_SOURCE;
+				MTL_FAST_MATH = YES;
+				ONLY_ACTIVE_ARCH = YES;
+				SDKROOT = iphoneos;
+				SWIFT_ACTIVE_COMPILATION_CONDITIONS = "DEBUG $(inherited)";
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
+			};
+			name = Debug;
+		};
+		3AE9B8C72AF9117A007DC90C /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				ASSETCATALOG_COMPILER_GENERATE_SWIFT_ASSET_SYMBOL_EXTENSIONS = YES;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++20";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_ENABLE_OBJC_WEAK = YES;
+				CLANG_WARN_BLOCK_CAPTURE_AUTORELEASING = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_COMMA = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DEPRECATED_OBJC_IMPLEMENTATIONS = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
+				CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = YES;
+				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_QUOTED_INCLUDE_IN_FRAMEWORK_HEADER = YES;
+				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
+				CLANG_WARN_STRICT_PROTOTYPES = YES;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
+				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
+				ENABLE_NS_ASSERTIONS = NO;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				ENABLE_USER_SCRIPT_SANDBOXING = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu17;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 17.0;
+				LOCALIZATION_PREFERS_STRING_CATALOGS = YES;
+				MTL_ENABLE_DEBUG_INFO = NO;
+				MTL_FAST_MATH = YES;
+				SDKROOT = iphoneos;
+				SWIFT_COMPILATION_MODE = wholemodule;
+				VALIDATE_PRODUCT = YES;
+			};
+			name = Release;
+		};
+		3AE9B8C92AF9117A007DC90C /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				DEVELOPMENT_ASSET_PATHS = "\"LNM_HostelHub/Preview Content\"";
+				DEVELOPMENT_TEAM = 2LRPRL7G34;
+				ENABLE_PREVIEWS = YES;
+				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_FILE = "LNM-HostelHub-Info.plist";
+				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
+				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
+				INFOPLIST_KEY_UILaunchScreen_Generation = YES;
+				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
+				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+				);
+				MARKETING_VERSION = 1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = "com.smit.LNM-HostelHub";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_EMIT_LOC_STRINGS = YES;
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+			};
+			name = Debug;
+		};
+		3AE9B8CA2AF9117A007DC90C /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				DEVELOPMENT_ASSET_PATHS = "\"LNM_HostelHub/Preview Content\"";
+				DEVELOPMENT_TEAM = 2LRPRL7G34;
+				ENABLE_PREVIEWS = YES;
+				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_FILE = "LNM-HostelHub-Info.plist";
+				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
+				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
+				INFOPLIST_KEY_UILaunchScreen_Generation = YES;
+				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
+				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+				);
+				MARKETING_VERSION = 1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = "com.smit.LNM-HostelHub";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_EMIT_LOC_STRINGS = YES;
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+			};
+			name = Release;
+		};
+		3AE9B8CC2AF9117A007DC90C /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
+				BUNDLE_LOADER = "$(TEST_HOST)";
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				DEVELOPMENT_TEAM = 2LRPRL7G34;
+				GENERATE_INFOPLIST_FILE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 17.0;
+				MARKETING_VERSION = 1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = "com.smit.LNM-HostelHubTests";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_EMIT_LOC_STRINGS = NO;
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/LNM_HostelHub.app/$(BUNDLE_EXECUTABLE_FOLDER_PATH)/LNM_HostelHub";
+			};
+			name = Debug;
+		};
+		3AE9B8CD2AF9117A007DC90C /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
+				BUNDLE_LOADER = "$(TEST_HOST)";
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				DEVELOPMENT_TEAM = 2LRPRL7G34;
+				GENERATE_INFOPLIST_FILE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 17.0;
+				MARKETING_VERSION = 1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = "com.smit.LNM-HostelHubTests";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_EMIT_LOC_STRINGS = NO;
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/LNM_HostelHub.app/$(BUNDLE_EXECUTABLE_FOLDER_PATH)/LNM_HostelHub";
+			};
+			name = Release;
+		};
+		3AE9B8CF2AF9117A007DC90C /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				DEVELOPMENT_TEAM = 2LRPRL7G34;
+				GENERATE_INFOPLIST_FILE = YES;
+				MARKETING_VERSION = 1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = "com.smit.LNM-HostelHubUITests";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_EMIT_LOC_STRINGS = NO;
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				TEST_TARGET_NAME = LNM_HostelHub;
+			};
+			name = Debug;
+		};
+		3AE9B8D02AF9117A007DC90C /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				DEVELOPMENT_TEAM = 2LRPRL7G34;
+				GENERATE_INFOPLIST_FILE = YES;
+				MARKETING_VERSION = 1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = "com.smit.LNM-HostelHubUITests";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_EMIT_LOC_STRINGS = NO;
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				TEST_TARGET_NAME = LNM_HostelHub;
+			};
+			name = Release;
+		};
+/* End XCBuildConfiguration section */
+
+/* Begin XCConfigurationList section */
+		3AE9B89F2AF91178007DC90C /* Build configuration list for PBXProject "LNM_HostelHub" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				3AE9B8C62AF9117A007DC90C /* Debug */,
+				3AE9B8C72AF9117A007DC90C /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		3AE9B8C82AF9117A007DC90C /* Build configuration list for PBXNativeTarget "LNM_HostelHub" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				3AE9B8C92AF9117A007DC90C /* Debug */,
+				3AE9B8CA2AF9117A007DC90C /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		3AE9B8CB2AF9117A007DC90C /* Build configuration list for PBXNativeTarget "LNM_HostelHubTests" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				3AE9B8CC2AF9117A007DC90C /* Debug */,
+				3AE9B8CD2AF9117A007DC90C /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		3AE9B8CE2AF9117A007DC90C /* Build configuration list for PBXNativeTarget "LNM_HostelHubUITests" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				3AE9B8CF2AF9117A007DC90C /* Debug */,
+				3AE9B8D02AF9117A007DC90C /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+/* End XCConfigurationList section */
+
+/* Begin XCRemoteSwiftPackageReference section */
+		3A80E4172AF919D900B852E8 /* XCRemoteSwiftPackageReference "firebase-ios-sdk" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/firebase/firebase-ios-sdk";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 10.17.0;
+			};
+		};
+		3A80E4312AF91B9E00B852E8 /* XCRemoteSwiftPackageReference "GoogleSignIn-iOS" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/google/GoogleSignIn-iOS";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 7.0.0;
+			};
+		};
+/* End XCRemoteSwiftPackageReference section */
+
+/* Begin XCSwiftPackageProductDependency section */
+		3A80E4182AF919D900B852E8 /* FirebaseAnalytics */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 3A80E4172AF919D900B852E8 /* XCRemoteSwiftPackageReference "firebase-ios-sdk" */;
+			productName = FirebaseAnalytics;
+		};
+		3A80E41A2AF919D900B852E8 /* FirebaseAuth */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 3A80E4172AF919D900B852E8 /* XCRemoteSwiftPackageReference "firebase-ios-sdk" */;
+			productName = FirebaseAuth;
+		};
+		3A80E41C2AF919D900B852E8 /* FirebaseDatabase */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 3A80E4172AF919D900B852E8 /* XCRemoteSwiftPackageReference "firebase-ios-sdk" */;
+			productName = FirebaseDatabase;
+		};
+		3A80E41E2AF919D900B852E8 /* FirebaseFirestore */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 3A80E4172AF919D900B852E8 /* XCRemoteSwiftPackageReference "firebase-ios-sdk" */;
+			productName = FirebaseFirestore;
+		};
+		3A80E4202AF919D900B852E8 /* FirebaseFirestoreSwift */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 3A80E4172AF919D900B852E8 /* XCRemoteSwiftPackageReference "firebase-ios-sdk" */;
+			productName = FirebaseFirestoreSwift;
+		};
+		3A80E4222AF919D900B852E8 /* FirebaseStorage */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 3A80E4172AF919D900B852E8 /* XCRemoteSwiftPackageReference "firebase-ios-sdk" */;
+			productName = FirebaseStorage;
+		};
+		3A80E4322AF91B9E00B852E8 /* GoogleSignIn */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 3A80E4312AF91B9E00B852E8 /* XCRemoteSwiftPackageReference "GoogleSignIn-iOS" */;
+			productName = GoogleSignIn;
+		};
+		3A80E4342AF91B9E00B852E8 /* GoogleSignInSwift */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 3A80E4312AF91B9E00B852E8 /* XCRemoteSwiftPackageReference "GoogleSignIn-iOS" */;
+			productName = GoogleSignInSwift;
+		};
+/* End XCSwiftPackageProductDependency section */
+	};
+	rootObject = 3AE9B89C2AF91178007DC90C /* Project object */;
+}
