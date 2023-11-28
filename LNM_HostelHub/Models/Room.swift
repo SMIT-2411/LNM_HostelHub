@@ -6,9 +6,11 @@
 //
 
 import Foundation
+import FirebaseFirestoreSwift
 
 struct Room: Identifiable ,Codable{
-    let id: String
-    let roomNumber: String
-    let isBooked: Bool
+        @DocumentID var id: String?
+        var number: String
+        var isAvailable: Bool
+        var bookingRequestId: String?
 }

@@ -6,11 +6,19 @@
 //
 
 import Foundation
+import FirebaseFirestoreSwift
 
-struct Complaint {
-    let id: String
-    let userID: String
-    let description: String
-    let isResolved: Bool
-    
+
+struct Complaint: Identifiable, Codable {
+    @DocumentID var id: String? = UUID().uuidString
+    var complaintType: String
+    var complaintDetails: String
+    var userName: String
+    var rollNo: String
+    var roomNo: String
+    var contact: String
+    var hostel: String
+    var preferredDate: Date
+    var preferredTimeFrom: Date
+    var preferredTimeTo: Date
 }

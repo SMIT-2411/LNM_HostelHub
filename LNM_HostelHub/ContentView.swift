@@ -9,10 +9,11 @@ import SwiftUI
 
 struct ContentView: View {
     var body: some View {
-        LoginView()
+       MainView()
+      //  ComplaintView()
     }
 }
 
 #Preview {
-    ContentView()
+    ContentView().preferredColorScheme(.light)
 }

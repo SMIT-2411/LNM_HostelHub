@@ -1,8 +1,14 @@
 import Foundation
-struct Booking {
+
+struct Booking: Identifiable {
     let id: String
-    let userID: String
-    let roomNumber: Int
-    let isApproved: Bool
+    let studentID:String
+    let hostel: String
+    let room: String
+    let rollNo: String
+    let studentName: String
+    let studentEmail: String
+    let bookingStatus: String
 }
+
 
