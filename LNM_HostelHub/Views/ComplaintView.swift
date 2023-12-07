@@ -152,9 +152,7 @@ struct ComplaintView: View {
                             title: Text("Complaint Submitted Successfully"),
                             message: Text("Your complaint has been submitted successfully."),
                             dismissButton: .default(Text("OK")) {
-                                DispatchQueue.main.asyncAfter(deadline: .now() + 2) {
-                                    clearFields()
-                                }
+                                clearFields()
                                 isComplaintSubmitted = false
                             }
                         )
