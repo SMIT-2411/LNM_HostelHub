@@ -7,7 +7,6 @@ struct Booking: Identifiable {
     let room: String
     let rollNo: String
     let studentName: String
-    let studentEmail: String
     let bookingStatus: String
 }
 

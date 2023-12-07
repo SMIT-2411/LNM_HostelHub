@@ -30,6 +30,10 @@ struct AdminDashboardView: View {
                     Label("Complaint Requests", systemImage: "flag")
                 }
                 .tag(1)
+            LeaveFormRequestView()
+                .tabItem{
+                    Label("Leave Form Requests", systemImage: "list.bullet.clipboard")
+                }
         }
         .navigationBarBackButtonHidden(true) // Hide the default back button
         .navigationBarItems(trailing:

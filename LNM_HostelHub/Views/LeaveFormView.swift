@@ -9,10 +9,12 @@ struct LeaveFormView: View {
     @State private var reason = ""
     @State private var startDate = Date()
     @State private var endDate = Date()
-    @State private var isSubmitting = false
+    //@State private var isSubmitting = false
     @State private var showSuccessAlert = false
     @State private var showErrorAlert = false
+    @State private var isLeaveSubmitted = false
     @State private var alertMessage = ""
+    
     
     @State private var userName = ""
     @State private var rollNo = ""
@@ -20,11 +22,25 @@ struct LeaveFormView: View {
     @State private var contact = ""
     @State private var selectedHostel = ""
     
+    @State private var showPreviousLeaveForms = false
+
+    
     var db = Firestore.firestore()
 
     var body: some View {
         VStack {
+            
             Form {
+                
+                Section {
+                    Button("View Previous Leave Forms") {
+                        showPreviousLeaveForms = true
+                    }
+                    .sheet(isPresented: $showPreviousLeaveForms) {
+                        PreviousLeaveFormsView()
+                    }
+                }
+                
                 sectionUserDetails()
                 sectionReason()
                 sectionDateFrom()
@@ -32,15 +48,6 @@ struct LeaveFormView: View {
                 sectionSubmitLeaveForm()
             }
             .onAppear(perform: fetchUserDetails)
-            .alert(isPresented: $showSuccessAlert) {
-                Alert(
-                    title: Text("Leave Request Submitted"),
-                    message: Text("Your leave request has been submitted successfully."),
-                    dismissButton: .default(Text("OK"), action: {
-                        // Optionally add any additional actions
-                    })
-                )
-            }
         }
     }
 
@@ -61,7 +68,7 @@ struct LeaveFormView: View {
 
     private func sectionDateTo() -> some View {
         Section(header: Text("End Date")) {
-            DatePicker("End Date", selection: $endDate, in: Date()..., displayedComponents: .date)
+            DatePicker("End Date", selection: $endDate, in: (startDate + 86400)..., displayedComponents: .date)
                 .datePickerStyle(GraphicalDatePickerStyle())
         }
     }
@@ -82,13 +89,33 @@ struct LeaveFormView: View {
                 Button("Submit Leave Request") {
                     submitLeaveRequest()
                 }
-                .alert(isPresented: $showErrorAlert) {
-                    Alert(
-                        title: Text("Error"),
-                        message: Text(alertMessage),
-                        dismissButton: .default(Text("OK"))
-                    )
-                }
+                .alert(isPresented: Binding<Bool>(
+                                    get: { showErrorAlert || isLeaveSubmitted },
+                                    set: { _ in }
+                                )) {
+                                    if showErrorAlert {
+                                        return Alert(
+                                            title: Text("Error"),
+                                            message: Text(alertMessage),
+                                            dismissButton: .default(Text("OK")) {
+                                                showErrorAlert = false
+                                            }
+                                        )
+                                    } else if isLeaveSubmitted {
+                                        return Alert(
+                                            title: Text("Complaint Submitted Successfully"),
+                                            message: Text("Your complaint has been submitted successfully."),
+                                            dismissButton: .default(Text("OK")) {
+                                                DispatchQueue.main.asyncAfter(deadline: .now() + 2) {
+                                                    clearFields()
+                                                }
+                                                isLeaveSubmitted = false
+                                            }
+                                        )
+                                    } else {
+                                        return Alert(title: Text(""))
+                                    }
+                                }
                 Spacer()
             }
         }
@@ -117,81 +144,80 @@ struct LeaveFormView: View {
                 }
             } catch {
                 print("Error fetching user details: \(error.localizedDescription)")
+                alertMessage = "Error fetching user details: \(error.localizedDescription)"
+                showErrorAlert = true
+                
             }
         }
     }
 
     private func submitLeaveRequest() {
-        guard startDate.distance(to: endDate) >= 86400 else {
-            print("Error: Minimum one-day span required between start date and end date.")
-            return
-        }
+        
 
-        isSubmitting = true
+        guard !reason.isEmpty else {
+                showErrorAlert = true
+                alertMessage = "Reason cannot be empty."
+                return
+            }
 
         guard let userID = Auth.auth().currentUser?.uid else {
             print("Error: User ID not available.")
-            isSubmitting = false
+           
             return
         }
 
-        Firestore.firestore().collection("leaveForm")
-            .whereField("userID", isEqualTo: userID)
-            .whereField("status", isEqualTo: "pending")
-            .getDocuments { [self] querySnapshot, error in
+        Firestore.firestore().collection("user_details").document(userID).getDocument { snapshot, error in
+            if let error = error {
+                print("Error fetching user details: \(error.localizedDescription)")
+                
+                return
+            }
+
+            guard let userData = snapshot?.data(),
+                  let name = userData["name"] as? String,
+                  let rollNo = userData["rollNo"] as? String,
+                  let contact = userData["contactNo"] as? String,
+                  let hostel = userData["hostel"] as? String else {
+                print("Error: User details not available.")
+               
+                return
+            }
+
+            let leaveRequestData: [String: Any] = [
+                "userID": userID,
+                "name": name,
+                "rollNo": rollNo,
+                "contact": contact,
+                "hostel": hostel,
+                "reason": reason,
+                "startDate": startDate,
+                "endDate": endDate,
+                "status": "pending",
+            ]
+
+            Firestore.firestore().collection("leaveform").addDocument(data: leaveRequestData) { error in
+                
                 if let error = error {
-                    print("Error checking existing leave requests: \(error.localizedDescription)")
-                    isSubmitting = false
-                    return
-                }
-
-                if !querySnapshot!.documents.isEmpty {
-                    print("Error: User already has a pending leave request.")
-                    isSubmitting = false
-                    return
-                }
-
-                Firestore.firestore().collection("user_details").document(userID).getDocument { snapshot, error in
-                    if let error = error {
-                        print("Error fetching user details: \(error.localizedDescription)")
-                        isSubmitting = false
-                        return
-                    }
-
-                    guard let userData = snapshot?.data(),
-                          let name = userData["name"] as? String,
-                          let rollNo = userData["rollNo"] as? String,
-                          let contact = userData["contactNo"] as? String,
-                          let hostel = userData["hostel"] as? String else {
-                        print("Error: User details not available.")
-                        isSubmitting = false
-                        return
-                    }
-
-                    let leaveRequestData: [String: Any] = [
-                        "userID": userID,
-                        "name": name,
-                        "rollNo": rollNo,
-                        "contact": contact,
-                        "hostel": hostel,
-                        "reason": reason,
-                        "startDate": startDate,
-                        "endDate": endDate,
-                        "status": "pending",
-                    ]
-
-                    Firestore.firestore().collection("leaveform").addDocument(data: leaveRequestData) { error in
-                        isSubmitting = false
-                        if let error = error {
-                            print("Error submitting leave request: \(error.localizedDescription)")
-                        } else {
-                            print("Leave request submitted successfully")
-                            showSuccessAlert = true
-                        }
-                    }
+                    print("Error submitting leave request: \(error.localizedDescription)")
+                } else {
+                    print("Leave request submitted successfully")
+                    isLeaveSubmitted = true
                 }
             }
+        }
     }
+    
+    
+    
+    private func clearFields() {
+        reason = ""
+        startDate = Date()
+        endDate = Date()
+        
+       
+    }
+    
+    
 }
 
 

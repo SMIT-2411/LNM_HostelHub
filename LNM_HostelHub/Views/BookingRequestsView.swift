@@ -43,7 +43,7 @@ struct BookingRequestsView: View {
             var bookingRequests: [Booking] = []
             for document in documents {
                 let bookingData = document.data()
-                let booking = Booking(id: document.documentID,studentID: bookingData["studentID"] as? String ?? "", hostel: bookingData["hostel"] as? String ?? "", room: bookingData["room"] as? String ?? "", rollNo: bookingData["rollNo"] as? String ?? "", studentName: bookingData["studentName"] as? String ?? "", studentEmail: bookingData["studentEmail"] as? String ?? "", bookingStatus: bookingData["bookingStatus"] as? String ?? "")
+                let booking = Booking(id: document.documentID,studentID: bookingData["studentID"] as? String ?? "", hostel: bookingData["hostel"] as? String ?? "", room: bookingData["room"] as? String ?? "", rollNo: bookingData["rollNo"] as? String ?? "", studentName: bookingData["studentName"] as? String ?? "", bookingStatus: bookingData["bookingStatus"] as? String ?? "")
                 bookingRequests.append(booking)
             }
 
@@ -63,7 +63,15 @@ struct BookingRequestCell: View {
 
             VStack{
                 HStack {
-                    Text(booking.studentName)
+                    VStack{
+                        
+                        
+                        Text(booking.studentName)
+                           
+                        
+                        Text(booking.hostel)
+                           
+                    }
                     
                     Spacer()
                     

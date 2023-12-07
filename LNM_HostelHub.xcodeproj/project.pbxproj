@@ -7,6 +7,8 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		3A5600012B21FBA400395394 /* PreviousComplaintsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3A5600002B21FBA400395394 /* PreviousComplaintsView.swift */; };
+		3A5600052B22329A00395394 /* PreviousLeaveFormsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3A5600042B22329A00395394 /* PreviousLeaveFormsView.swift */; };
 		3A63AB2D2B1A23E70061B362 /* LeaveFormView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3A63AB2C2B1A23E70061B362 /* LeaveFormView.swift */; };
 		3A6401EB2B0B65B4005224B0 /* UserDetailsFormView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3A6401EA2B0B65B4005224B0 /* UserDetailsFormView.swift */; };
 		3A665D922B14D52700B37183 /* FontManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3A665D912B14D52600B37183 /* FontManager.swift */; };
@@ -71,6 +73,8 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		3A5600002B21FBA400395394 /* PreviousComplaintsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PreviousComplaintsView.swift; sourceTree = "<group>"; };
+		3A5600042B22329A00395394 /* PreviousLeaveFormsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PreviousLeaveFormsView.swift; sourceTree = "<group>"; };
 		3A63AB2C2B1A23E70061B362 /* LeaveFormView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LeaveFormView.swift; sourceTree = "<group>"; };
 		3A6401EA2B0B65B4005224B0 /* UserDetailsFormView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserDetailsFormView.swift; sourceTree = "<group>"; };
 		3A665D912B14D52600B37183 /* FontManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FontManager.swift; sourceTree = "<group>"; };
@@ -241,15 +245,17 @@
 				3A6401EA2B0B65B4005224B0 /* UserDetailsFormView.swift */,
 				3A80E4382AF91E8000B852E8 /* AdminDashboardView.swift */,
 				3AF1A8EC2B12855500DC57AF /* BookingRequestsView.swift */,
+				3AF1A8F02B128B9000DC57AF /* BookingRequestsExtView.swift */,
 				3AF1A8EE2B1285BC00DC57AF /* ComplaintRequestsView.swift */,
 				3A80E4442AF91EE700B852E8 /* UserDashboardView.swift */,
 				3A80E43E2AF91EAF00B852E8 /* BookingView.swift */,
 				3A80E43A2AF91E9000B852E8 /* AvailableRoomsView.swift */,
 				3A80E4402AF91EBA00B852E8 /* ComplaintView.swift */,
 				3AE4775F2B0C851A00EF98A6 /* UserDetailsView.swift */,
-				3AF1A8F02B128B9000DC57AF /* BookingRequestsExtView.swift */,
 				3A63AB2C2B1A23E70061B362 /* LeaveFormView.swift */,
 				3A8010CD2B21180D00F17495 /* LeaveFormRequestView.swift */,
+				3A5600002B21FBA400395394 /* PreviousComplaintsView.swift */,
+				3A5600042B22329A00395394 /* PreviousLeaveFormsView.swift */,
 			);
 			path = Views;
 			sourceTree = "<group>";
@@ -420,6 +426,7 @@
 				3A80E43F2AF91EAF00B852E8 /* BookingView.swift in Sources */,
 				3A665D9C2B14D6AF00B37183 /* MainView.swift in Sources */,
 				3A665D9A2B14D68900B37183 /* CardView.swift in Sources */,
+				3A5600052B22329A00395394 /* PreviousLeaveFormsView.swift in Sources */,
 				3AE9B8AA2AF91178007DC90C /* ContentView.swift in Sources */,
 				3A665D952B14D60500B37183 /* Card.swift in Sources */,
 				3A6401EB2B0B65B4005224B0 /* UserDetailsFormView.swift in Sources */,
@@ -431,6 +438,7 @@
 				3A80E4392AF91E8000B852E8 /* AdminDashboardView.swift in Sources */,
 				3AF1A8E72B1133BF00DC57AF /* Hostel.swift in Sources */,
 				3A80E42B2AF91A9C00B852E8 /* Room.swift in Sources */,
+				3A5600012B21FBA400395394 /* PreviousComplaintsView.swift in Sources */,
 				3A80E4372AF91BCE00B852E8 /* Application_utility.swift in Sources */,
 				3A80E42D2AF91AB300B852E8 /* SignIn_withGoogle.swift in Sources */,
 				3AF1A8F32B1293FC00DC57AF /* DismissManager.swift in Sources */,

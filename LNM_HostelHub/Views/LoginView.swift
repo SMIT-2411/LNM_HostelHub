@@ -63,6 +63,7 @@ struct LoginView: View {
                             .cornerRadius(50.0)
                             .shadow(color: Color.white.opacity(0.08), radius: 60, x: /*@START_MENU_TOKEN@*/0.0/*@END_MENU_TOKEN@*/, y: 16)
                             .padding(.vertical)
+                            .submitLabel(.done)
                         
                         
                         HStack{
@@ -71,6 +72,7 @@ struct LoginView: View {
                                 .padding(.top)
                                 .font(Montserrat.medium.font(size: 25))
                                 .padding(.leading)
+                               
                             
                             Spacer()
                         }
@@ -82,6 +84,7 @@ struct LoginView: View {
                             .cornerRadius(50.0)
                             .shadow(color: Color.white.opacity(0.08), radius: 60, x: /*@START_MENU_TOKEN@*/0.0/*@END_MENU_TOKEN@*/, y: 16)
                             .padding(.vertical)
+                            .submitLabel(.done)
                         
                         Button{
                             loginUser()
@@ -133,8 +136,6 @@ struct LoginView: View {
                         .foregroundColor(Color("blue2"))
                     Spacer()
                 }
-            }.onTapGesture {
-                self.hideKeyboard()
             }
             .onAppear {
                 resetState()

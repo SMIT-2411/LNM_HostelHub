@@ -21,7 +21,7 @@ struct BookingRequestsExtView: View {
             VStack(alignment: .leading, spacing: 16) {
                 Text("Student Name: \(booking.studentName)")
                 Text("Roll No: \(booking.rollNo)")
-                Text("Email: \(booking.studentEmail)")
+                Text("Hostel: \(booking.hostel)")
                 Text("Room No: \(booking.room)")
             }
             .font(.headline)
@@ -61,7 +61,7 @@ struct BookingRequestsExtView: View {
                 
                 _ = Auth.auth().currentUser?.uid ?? ""
                 let userDetailsRef = Firestore.firestore().collection("user_details").document(booking.studentID)
-                       userDetailsRef.updateData(["roomNo": booking.room]) { error in
+                userDetailsRef.updateData(["roomNo": booking.room , "hostel":booking.hostel]) { error in
                            if let error = error {
                                print("Error updating user_details: \(error.localizedDescription)")
                                return
@@ -119,5 +119,5 @@ struct ActionButton: View {
 
 
 #Preview {
-    BookingRequestsExtView(booking: Booking(id: "mockID",studentID: "mockID", hostel: "mockHostel", room: "mockRoom", rollNo: "mockRollNo", studentName: "mockName", studentEmail: "mockEmail", bookingStatus: "mockStatus"))
+    BookingRequestsExtView(booking: Booking(id: "mockID",studentID: "mockID", hostel: "mockHostel", room: "mockRoom", rollNo: "mockRollNo", studentName: "mockName", bookingStatus: "mockStatus"))
 }

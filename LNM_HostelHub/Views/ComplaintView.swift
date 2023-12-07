@@ -1,6 +1,3 @@
-
-
-
 import SwiftUI
 import FirebaseFirestore
 import Firebase
@@ -22,6 +19,7 @@ struct ComplaintView: View {
     @State private var rollNo = ""
     @State private var roomNo = ""
     @State private var contact = ""
+    @State private var isShowingPreviousComplaints = false
     
     var db = Firestore.firestore()
     
@@ -30,19 +28,28 @@ struct ComplaintView: View {
     var hostels = ["BH1", "BH2", "BH3", "BH4", "GH"]
     
     var body: some View {
-                
         
+        Form {
             
-            Form {
-                sectionComplaintType()
-                sectionComplaintDetails()
-                sectionPreferredDate()
-                sectionPreferredTimeRange()
-                sectionUserDetails()
-                sectionSubmitComplaint()
+            
+            Section {
+                Button("View Previous Complaints") {
+                    isShowingPreviousComplaints = true
+                }
+                .sheet(isPresented: $isShowingPreviousComplaints) {
+                    PreviousComplaintsView()
+                }
             }
-            .onAppear(perform: fetchUserDetails)
-       
+            
+            sectionComplaintType()
+            sectionComplaintDetails()
+            sectionPreferredDate()
+            sectionPreferredTimeRange()
+            sectionUserDetails()
+            sectionSubmitComplaint()
+        }
+        .onAppear(perform: fetchUserDetails)
+        
     }
     
     // MARK: - Sections
@@ -93,8 +100,8 @@ struct ComplaintView: View {
                 .datePickerStyle(WheelDatePickerStyle())
                 .frame(maxWidth: .infinity, alignment: .leading)
                 .onChange(of: selectedTimeTo) { newValue in
-                                validateTimeSpan()
-                            }
+                    validateTimeSpan()
+                }
         }
     }
     
@@ -128,23 +135,32 @@ struct ComplaintView: View {
                 Button("Submit Complaint") {
                     submitComplaint()
                 }
-                .alert(isPresented: $isComplaintSubmitted) {
-                    Alert(
-                        title: Text("Complaint Submitted"),
-                        message: Text("Your complaint has been submitted successfully."),
-                        dismissButton: .default(Text("OK"), action: {
-                            clearFields()
-                            isComplaintSubmitted = false
-                        })
-                    )
-                }
-                .alert(isPresented: $showErrorAlert) {
-                    Alert(
-                        title: Text("Error"),
-                        message: Text(alertMessage),
-                        dismissButton: .default(Text("OK"))
-                        
-                    )
+                .alert(isPresented: Binding<Bool>(
+                    get: { showErrorAlert || isComplaintSubmitted },
+                    set: { _ in }
+                )) {
+                    if showErrorAlert {
+                        return Alert(
+                            title: Text("Error"),
+                            message: Text(alertMessage),
+                            dismissButton: .default(Text("OK")) {
+                                showErrorAlert = false
+                            }
+                        )
+                    } else if isComplaintSubmitted {
+                        return Alert(
+                            title: Text("Complaint Submitted Successfully"),
+                            message: Text("Your complaint has been submitted successfully."),
+                            dismissButton: .default(Text("OK")) {
+                                DispatchQueue.main.asyncAfter(deadline: .now() + 2) {
+                                    clearFields()
+                                }
+                                isComplaintSubmitted = false
+                            }
+                        )
+                    } else {
+                        return Alert(title: Text(""))
+                    }
                 }
                 Spacer()
             }
@@ -154,73 +170,79 @@ struct ComplaintView: View {
     // MARK: - Functions
     
     private func fetchUserDetails() {
-            Task {
-                do {
-                    guard let userID = Auth.auth().currentUser?.uid else { return }
-                    let document = try await db.collection("user_details").document(userID).getDocument()
+        Task {
+            do {
+                guard let userID = Auth.auth().currentUser?.uid else { return }
+                let document = try await db.collection("user_details").document(userID).getDocument()
+                
+                if document.exists {
+                    userName = document["name"] as? String ?? ""
+                    rollNo = document["rollNo"] as? String ?? ""
+                    roomNo = document["roomNo"] as? String ?? ""
+                    contact = document["contactNo"] as? String ?? ""
                     
-                    if document.exists {
-                        userName = document["name"] as? String ?? ""
-                        rollNo = document["rollNo"] as? String ?? ""
-                        roomNo = document["roomNo"] as? String ?? ""
-                        contact = document["contactNo"] as? String ?? ""
-                        
-                        if let hostel = document["hostel"] as? String, hostel != "N/A" {
-                            selectedHostel = hostel
-                        } else {
-                            alertMessage = "Room not yet booked. Please complete your booking before submitting a complaint."
-                            showErrorAlert = true
-                        }
+                    if let hostel = document["hostel"] as? String, hostel != "N/A" {
+                        selectedHostel = hostel
                     } else {
-                        print("User details not found")
+                        alertMessage = "Room not yet booked. Please complete your booking before submitting a complaint."
+                        showErrorAlert = true
                     }
-                } catch {
-                    print("Error fetching user details: \(error.localizedDescription)")
+                } else {
+                    print("User details not found")
                 }
+            } catch {
+                print("Error fetching user details: \(error.localizedDescription)")
             }
         }
+    }
     
     private func submitComplaint() {
-            Task {
-                do {
-                    guard !isComplaintSubmitted else {
-                        return
-                    }
-
-                    guard !selectedComplaintType.isEmpty,
-                          !complaintDetails.isEmpty,
-                          !selectedHostel.isEmpty else {
-                        alertMessage = "Please fill in all required fields before submitting a complaint."
-                        showErrorAlert = true
-                        return
-                    }
-
-                    let documentID = UUID().uuidString
-
-                    let complaintData: [String: Any] = [
-                        "complaintType": selectedComplaintType,
-                        "complaintDetails": complaintDetails,
-                        "hostel": selectedHostel,
-                        "preferredDate": selectedDate,
-                        "preferredTimeFrom": selectedTimeFrom,
-                        "preferredTimeTo": selectedTimeTo,
-                        "userName": userName,
-                        "rollNo": rollNo,
-                        "roomNo": roomNo,
-                        "contact": contact,
-                        "status": status
-                    ]
-
-                    try await db.collection("complaints").document(documentID).setData(complaintData)
-
-                    print("Complaint submitted successfully!")
-                    isComplaintSubmitted = true
-                    isComplaintSubmitted = false
-                } catch {
-                    print("Error submitting complaint: \(error.localizedDescription)")
+        Task {
+            do {
+                guard !isComplaintSubmitted else {
+                    return
                 }
+                
+                guard !selectedComplaintType.isEmpty,
+                      !complaintDetails.isEmpty,
+                      !selectedHostel.isEmpty else {
+                    alertMessage = "Please fill in all required fields before submitting a complaint."
+                    showErrorAlert = true
+                    return
+                }
+                
+                guard let userID = Auth.auth().currentUser?.uid else { return }
+
+                
+                let documentID = UUID().uuidString
+                
+                let complaintData: [String: Any] = [
+                    "userID": userID,
+                    "complaintType": selectedComplaintType,
+                    "complaintDetails": complaintDetails,
+                    "hostel": selectedHostel,
+                    "preferredDate": selectedDate,
+                    "preferredTimeFrom": selectedTimeFrom,
+                    "preferredTimeTo": selectedTimeTo,
+                    "userName": userName,
+                    "rollNo": rollNo,
+                    "roomNo": roomNo,
+                    "contact": contact,
+                    "status": status
+                ]
+                
+                try await db.collection("complaints").document(documentID).setData(complaintData)
+                
+                print("Complaint submitted successfully!")
+                DispatchQueue.main.async {
+                    isComplaintSubmitted = true
+                }
+                
+            } catch {
+                print("Error submitting complaint: \(error.localizedDescription)")
             }
         }
+    }
     
     private func clearFields() {
         selectedComplaintType = ""
@@ -242,5 +264,3 @@ struct ComplaintView: View {
 #Preview {
     ComplaintView()
 }
-
-

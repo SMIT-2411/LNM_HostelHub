@@ -24,6 +24,8 @@ struct RegistrationView: View {
     
     @State private var isRegistering = false // Track registration process
     @State private var showLoading = false // Show loading indicator
+    
+    
 
     
     @Environment(\.presentationMode) var presentationMode
@@ -95,6 +97,7 @@ struct RegistrationView: View {
                         .shadow(color: Color.white.opacity(0.08), radius: 60, x: /*@START_MENU_TOKEN@*/0.0/*@END_MENU_TOKEN@*/, y: 16)
                         .padding(.vertical)
                         .submitLabel(.done)
+                       
                     
                     
                     HStack{
@@ -117,6 +120,7 @@ struct RegistrationView: View {
                         .shadow(color: Color.white.opacity(0.08), radius: 60, x: /*@START_MENU_TOKEN@*/0.0/*@END_MENU_TOKEN@*/, y: 16)
                         .padding(.vertical)
                         .submitLabel(.done)
+                        
                     
                     HStack{
                         
@@ -204,8 +208,9 @@ struct RegistrationView: View {
                         "fatherName": fatherName,
                         "rollNo": rollNumber,
                         "contactNo": contact,
-                        "roomNo": roomNo,
-                        "hostel": hostel
+                        "hostel": hostel,
+                        "roomNo": roomNo
+                        
                         // ... other details
                     ]
                     userDetailsRef.setData(userDetails) { error in
@@ -236,15 +241,17 @@ struct RegistrationView: View {
             return false
         }
         
-        if name.isEmpty {
-            alertMessage = "Please enter your name."
-            return false
-        }
-        
-        if fatherName.isEmpty {
-            alertMessage = "Please enter your father's name."
-            return false
-        }
+        let trimmedName = name.trimmingCharacters(in: .whitespacesAndNewlines)
+            if !isValidAlphabeticString(trimmedName) || trimmedName.isEmpty {
+                alertMessage = "Please enter a valid name with only alphabets."
+                return false
+            }
+            
+            let trimmedFatherName = fatherName.trimmingCharacters(in: .whitespacesAndNewlines)
+            if !isValidAlphabeticString(trimmedFatherName) || trimmedFatherName.isEmpty {
+                alertMessage = "Please enter a valid father's name with only alphabets."
+                return false
+            }
         
         if rollNumber.isEmpty {
             alertMessage = "Please enter your roll number."
@@ -260,16 +267,17 @@ struct RegistrationView: View {
         
         return true
     }
-
-}
-
-extension View {
-    func hideKeyboard() {
-        UIApplication.shared.sendAction(#selector(UIResponder.resignFirstResponder), to: nil, from: nil, for: nil)
+    
+    
+    private func isValidAlphabeticString(_ input: String) -> Bool {
+        let alphabetRegex = "^[a-zA-Z ]+$"
+        let predicate = NSPredicate(format: "SELF MATCHES %@", alphabetRegex)
+        return predicate.evaluate(with: input)
     }
+    
+  
+
 }
-
-
 
 #Preview {
     RegistrationView()

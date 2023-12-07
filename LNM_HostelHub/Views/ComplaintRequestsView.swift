@@ -95,7 +95,7 @@ struct ComplaintDetailsView: View {
                 
                 Text("Details: \(complaint.complaintDetails)")
                     .multilineTextAlignment(.center)
-                Text("User Name: \(complaint.userName)")
+                Text("Name: \(complaint.userName)")
                 Text("Hostel: \(complaint.hostel)")
                 Text("Date: \(formattedDate(complaint.preferredDate))")
                 Text("Time From: \(formattedTime(complaint.preferredTimeFrom))")
