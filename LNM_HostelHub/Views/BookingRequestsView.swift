@@ -14,46 +14,41 @@ struct BookingRequestsView: View {
 
     @State private var isAddRoomMenuVisible: Bool = false
 
-        var body: some View {
-            ScrollView(.vertical) {
+    var body: some View {
+        NavigationView {
                 VStack {
                     Text("Booking Request")
                         .font(.largeTitle)
                         .fontWeight(.bold)
                         .padding()
-
+                    
                     List(bookingRequests) { booking in
                         BookingRequestCell(booking: booking)
                     }
                     .onAppear {
                         fetchBookingRequests()
                     }
+//                    Spacer()
+//                    VStack {
+//                        // Your existing content
+//
+//                        Text("Add Room")
+//                            .onTapGesture {
+//                                isAddRoomMenuVisible.toggle()
+//                            }
+//                            .foregroundColor(.blue)
+//                            .padding()
+//                            .background(Color.white)
+//                            .clipShape(Circle())
+//                            .shadow(radius: 5)
+//                            .padding()
+//                    }
                 }
-
-                // Add Room Floating Action Button
-                VStack {
-                    Spacer()
-                    HStack {
-                        Spacer()
-                        Button(action: {
-                            isAddRoomMenuVisible.toggle()
-                        }) {
-                            Image(systemName: "plus.circle.fill")
-                                .resizable()
-                                .frame(width: 50, height: 50)
-                                .foregroundColor(.blue)
-                        }
-                        .padding()
-                        .background(Color.white)
-                        .clipShape(Circle())
-                        .shadow(radius: 5)
-                        .padding()
-                        .offset(y: isAddRoomMenuVisible ? -80 : 0)
-                        .scaleEffect(isAddRoomMenuVisible ? 1.2 : 1.0)
-                        .animation(.spring())
-                    }
-                }
-
+                
+                
+               
+            
+                
                 if isAddRoomMenuVisible {
                     AddRoomMenuView { addedRoom in
                         // Handle addedRoom
@@ -63,30 +58,32 @@ struct BookingRequestsView: View {
                     }
                 }
             }
+        
         }
+
 
     private func fetchBookingRequests() {
-        let bookingsRef = Firestore.firestore().collection("Bookings")
-        bookingsRef.whereField("bookingStatus", isEqualTo: "pending").getDocuments { querySnapshot, error in
-            if let error = error {
-                print("Error fetching booking requests: \(error.localizedDescription)")
-                return
-            }
+            let bookingsRef = Firestore.firestore().collection("Bookings")
+            bookingsRef.whereField("bookingStatus", isEqualTo: "pending").getDocuments { querySnapshot, error in
+                if let error = error {
+                    print("Error fetching booking requests: \(error.localizedDescription)")
+                    return
+                }
 
-            guard let documents = querySnapshot?.documents else {
-                return
-            }
+                guard let documents = querySnapshot?.documents else {
+                    return
+                }
 
-            var bookingRequests: [Booking] = []
-            for document in documents {
-                let bookingData = document.data()
-                let booking = Booking(id: document.documentID,studentID: bookingData["studentID"] as? String ?? "", hostel: bookingData["hostel"] as? String ?? "", room: bookingData["room"] as? String ?? "", rollNo: bookingData["rollNo"] as? String ?? "", studentName: bookingData["studentName"] as? String ?? "", bookingStatus: bookingData["bookingStatus"] as? String ?? "")
-                bookingRequests.append(booking)
-            }
+                var bookingRequests: [Booking] = []
+                for document in documents {
+                    let bookingData = document.data()
+                    let booking = Booking(id: document.documentID, studentID: bookingData["studentID"] as? String ?? "", hostel: bookingData["hostel"] as? String ?? "", room: bookingData["room"] as? String ?? "", rollNo: bookingData["rollNo"] as? String ?? "", studentName: bookingData["studentName"] as? String ?? "", bookingStatus: bookingData["bookingStatus"] as? String ?? "")
+                    bookingRequests.append(booking)
+                }
 
-            self.bookingRequests = bookingRequests
+                self.bookingRequests = bookingRequests
+            }
         }
-    }
     
     private func addRoomToHostel(hostelId: String, roomNumber: String) {
             let hostelsRef = Firestore.firestore().collection("Hostels")
@@ -187,7 +184,6 @@ struct BookingRequestCell: View {
                 }
             }.padding()
                 .frame(maxWidth: .infinity)
-                .background(Color("BgColor"))
                 .cornerRadius(10)
                 .shadow(radius: 5)
                 .padding(.horizontal)
@@ -201,3 +197,5 @@ struct BookingRequestCell: View {
 #Preview {
     BookingRequestsView()
 }
+
+
