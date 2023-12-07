@@ -233,6 +233,8 @@ struct BookingView: View {
                         
                         print("Booking request submitted successfully")
                         
+                        self.showBookingAlert(message: "Room Book Request Sent!")
+                        
                         // Remove the booked room from the availableRooms array
                         if let index = self.availableRooms.firstIndex(of: room) {
                             self.availableRooms.remove(at: index)

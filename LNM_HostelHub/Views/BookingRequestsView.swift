@@ -13,17 +13,19 @@ struct BookingRequestsView: View {
     @State private var bookingRequests: [Booking] = []
 
     var body: some View {
-        VStack{
-            Text("Booking Request")
-                .font(.largeTitle)
-                .fontWeight(.bold)
-                .padding()
-            
-            List(bookingRequests) { booking in
-                BookingRequestCell(booking: booking)
-            }
-            .onAppear {
-                fetchBookingRequests()
+        ScrollView(.vertical){
+            VStack{
+                Text("Booking Request")
+                    .font(.largeTitle)
+                    .fontWeight(.bold)
+                    .padding()
+                
+                List(bookingRequests) { booking in
+                    BookingRequestCell(booking: booking)
+                }
+                .onAppear {
+                    fetchBookingRequests()
+                }
             }
         }
     }
@@ -86,7 +88,12 @@ struct BookingRequestCell: View {
                         EmptyView()
                     }
                 }
-            }
+            }.padding()
+                .frame(maxWidth: .infinity)
+                .background(Color("BgColor"))
+                .cornerRadius(10)
+                .shadow(radius: 5)
+                .padding(.horizontal)
         }
     }
 }

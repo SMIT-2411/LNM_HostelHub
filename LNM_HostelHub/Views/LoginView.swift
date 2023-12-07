@@ -275,7 +275,7 @@ struct LoginView: View {
     private func userIsAdmin(completion: @escaping (Bool) -> Void) {
         if let user = Auth.auth().currentUser {
             let db = Firestore.firestore()
-            let userDocRef = db.collection("users").document(user.uid)
+            let userDocRef = db.collection("user").document(user.uid)
             userDocRef.getDocument { document, error in
                 if let document = document, document.exists, let data = document.data(), let role = data["role"] as? String {
                     if role == "admin" {

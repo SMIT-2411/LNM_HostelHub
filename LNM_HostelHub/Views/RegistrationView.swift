@@ -8,6 +8,7 @@
 import SwiftUI
 import Firebase
 
+
 struct RegistrationView: View {
     @State private var email = ""
     @State private var password = ""
@@ -20,6 +21,7 @@ struct RegistrationView: View {
     @State private var hostel = "N/A"
     @State var isRegistrationSuccess = false
     @State private var showErrorAlert = false
+    @State private var emailValid = false
     
     
     @State private var isRegistering = false // Track registration process
@@ -167,7 +169,11 @@ struct RegistrationView: View {
                     
                     
                     Button{
-                        registerUser()
+                        if isValidForm() {
+                                registerUser()
+                            } else {
+                                showErrorAlert = true
+                            }
                     }label: {
                         Text("Register")
                             .font(Montserrat.bold.font(size: 25))
@@ -183,7 +189,7 @@ struct RegistrationView: View {
                             dismissButton: .default(Text("OK"))
                         )
                     }
-                    .disabled(!isValidForm())
+                    
                     
                     
                 }
@@ -192,6 +198,19 @@ struct RegistrationView: View {
     }
     
     private func registerUser() {
+        
+       
+        
+       
+        
+        let domain = email.split(separator:"@")[1]
+            if !["gmail.com", "lnmiit.ac.in"].contains(domain) {
+                alertMessage = "Invalid email domain. Please use either gmail.com or lnmiit.ac.in."
+                showErrorAlert = true
+                return
+            }
+        
+        
         Auth.auth().createUser(withEmail: email, password: password) { result, error in
             DispatchQueue.main.async {
                 if let error = error {
@@ -263,6 +282,16 @@ struct RegistrationView: View {
             return false
         }
         
+        if !isPasswordValid(password) {
+                alertMessage = "Password must be at least 8 characters and contain a lowercase letter, uppercase letter, number, and special character."
+                return false
+            }
+        
+        if !isValidRollNumber(rollNumber) {
+                alertMessage = "Roll number can only contain alphanumeric characters."
+                return false
+            }
+        
         // Add more validations if needed
         
         return true
@@ -273,6 +302,24 @@ struct RegistrationView: View {
         let alphabetRegex = "^[a-zA-Z ]+$"
         let predicate = NSPredicate(format: "SELF MATCHES %@", alphabetRegex)
         return predicate.evaluate(with: input)
+    }
+    
+    private func isPasswordValid(_ password: String) -> Bool {
+        let regex =
+     
+    "^(?=.*[a-z])(?=.*[A-Z])(?=.*[0-9])(?=.*[!@#$%^&*_=+-]).{8,}$"
+
+        
+    let predicate =
+     
+    NSPredicate(format: "SELF MATCHES %@", regex)
+        return predicate.evaluate(with: password)
+    }
+    
+    private func isValidRollNumber(_ rollNumber: String) -> Bool {
+        let regex = "^[a-zA-Z0-9]+$"
+        let predicate = NSPredicate(format: "SELF MATCHES %@", regex)
+        return predicate.evaluate(with: rollNumber)
     }
     
   

@@ -98,7 +98,7 @@ struct PreviousComplaintCell: View {
 struct UserComplaint: Identifiable {
     let id: String
     let complaintType: String
-    let status: String
+    var status: String
     // Add other properties as needed
 }
 

@@ -21,4 +21,5 @@ struct Complaint: Identifiable, Codable {
     var preferredDate: Date
     var preferredTimeFrom: Date
     var preferredTimeTo: Date
+    var status: String
 }

@@ -103,12 +103,10 @@ struct LeaveFormView: View {
                                         )
                                     } else if isLeaveSubmitted {
                                         return Alert(
-                                            title: Text("Complaint Submitted Successfully"),
-                                            message: Text("Your complaint has been submitted successfully."),
+                                            title: Text("Leave Form Submitted Successfully"),
+                                            message: Text("Your Leave Form has been submitted successfully."),
                                             dismissButton: .default(Text("OK")) {
-                                                DispatchQueue.main.asyncAfter(deadline: .now() + 2) {
-                                                    clearFields()
-                                                }
+                                                clearFields()
                                                 isLeaveSubmitted = false
                                             }
                                         )

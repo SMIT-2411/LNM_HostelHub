@@ -9,7 +9,7 @@ import Firebase
 import SwiftUI
 
 struct PreviousLeaveFormsView: View {
-    @State private var LeaveForms: [LeaveForm] = []
+    @State private var LeaveForms: [LeaveFormat] = []
     var db = Firestore.firestore()
     
     var body: some View {
@@ -50,14 +50,14 @@ struct PreviousLeaveFormsView: View {
                     return
                 }
 
-                var LeaveForms: [LeaveForm] = []
+                var LeaveForms: [LeaveFormat] = []
                 for document in documents {
                     let leaveFormData = document.data()
                     
                     let startDateTimestamp = leaveFormData["startDate"] as? Timestamp ?? Timestamp(date: Date())
                     let endDateTimestamp = leaveFormData["endDate"] as? Timestamp ?? Timestamp(date: Date())
 
-                    let userLeaveForm = LeaveForm(
+                    let userLeaveForm = LeaveFormat(
                         id: document.documentID,
                         reason: leaveFormData["reason"] as? String ?? "",
                         startDate: startDateTimestamp.dateValue(),
@@ -78,7 +78,7 @@ struct PreviousLeaveFormsView: View {
 
 
 struct PreviousLeaveFormCell: View {
-    let leaveForm: LeaveForm
+    let leaveForm: LeaveFormat
 
     var body: some View {
         VStack(alignment: .leading) {
@@ -101,17 +101,17 @@ struct PreviousLeaveFormCell: View {
     }
 }
 
-struct LeaveForm: Identifiable {
+struct LeaveFormat: Identifiable{
     let id: String
     let reason: String
     let startDate: Date
     let endDate: Date
-    let status: String
+    var status: String
     // Add other properties as needed
 }
 
 struct LeaveFormDetailedView: View {
-    let leaveForm: LeaveForm
+    let leaveForm: LeaveFormat
 
     var body: some View {
         VStack {
@@ -134,7 +134,7 @@ struct LeaveFormDetailedView: View {
                 .padding()
 
             Text("Status: \(leaveForm.status)")
-                .foregroundColor(leaveForm.status == "Pending" ? .red : .green)
+                .foregroundColor(leaveForm.status == "pending" ? .red : .green)
                 .font(.subheadline)
                 .padding()
             

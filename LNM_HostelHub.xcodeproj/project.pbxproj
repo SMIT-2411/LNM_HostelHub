@@ -9,6 +9,7 @@
 /* Begin PBXBuildFile section */
 		3A5600012B21FBA400395394 /* PreviousComplaintsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3A5600002B21FBA400395394 /* PreviousComplaintsView.swift */; };
 		3A5600052B22329A00395394 /* PreviousLeaveFormsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3A5600042B22329A00395394 /* PreviousLeaveFormsView.swift */; };
+		3A5600072B22526000395394 /* LeaveStruct.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3A5600062B22526000395394 /* LeaveStruct.swift */; };
 		3A63AB2D2B1A23E70061B362 /* LeaveFormView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3A63AB2C2B1A23E70061B362 /* LeaveFormView.swift */; };
 		3A6401EB2B0B65B4005224B0 /* UserDetailsFormView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3A6401EA2B0B65B4005224B0 /* UserDetailsFormView.swift */; };
 		3A665D922B14D52700B37183 /* FontManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3A665D912B14D52600B37183 /* FontManager.swift */; };
@@ -75,6 +76,7 @@
 /* Begin PBXFileReference section */
 		3A5600002B21FBA400395394 /* PreviousComplaintsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PreviousComplaintsView.swift; sourceTree = "<group>"; };
 		3A5600042B22329A00395394 /* PreviousLeaveFormsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PreviousLeaveFormsView.swift; sourceTree = "<group>"; };
+		3A5600062B22526000395394 /* LeaveStruct.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LeaveStruct.swift; sourceTree = "<group>"; };
 		3A63AB2C2B1A23E70061B362 /* LeaveFormView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LeaveFormView.swift; sourceTree = "<group>"; };
 		3A6401EA2B0B65B4005224B0 /* UserDetailsFormView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserDetailsFormView.swift; sourceTree = "<group>"; };
 		3A665D912B14D52600B37183 /* FontManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FontManager.swift; sourceTree = "<group>"; };
@@ -274,6 +276,7 @@
 				3AF1A8E62B1133BF00DC57AF /* Hostel.swift */,
 				3AF1A8F22B1293FC00DC57AF /* DismissManager.swift */,
 				3A665D912B14D52600B37183 /* FontManager.swift */,
+				3A5600062B22526000395394 /* LeaveStruct.swift */,
 			);
 			path = Models;
 			sourceTree = "<group>";
@@ -431,6 +434,7 @@
 				3A665D952B14D60500B37183 /* Card.swift in Sources */,
 				3A6401EB2B0B65B4005224B0 /* UserDetailsFormView.swift in Sources */,
 				3A80E4272AF91A6200B852E8 /* BookingRequest.swift in Sources */,
+				3A5600072B22526000395394 /* LeaveStruct.swift in Sources */,
 				3AF1A8F12B128B9000DC57AF /* BookingRequestsExtView.swift in Sources */,
 				3AE477602B0C851A00EF98A6 /* UserDetailsView.swift in Sources */,
 				3AF1A8EF2B1285BC00DC57AF /* ComplaintRequestsView.swift in Sources */,

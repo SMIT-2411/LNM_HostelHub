@@ -27,9 +27,7 @@ struct ComplaintRequestsView: View {
                                 selectedComplaint = nil
                             })) {
                                 ComplaintRowView(complaint: complaint)
-                                    .padding()
-                                    .background(RoundedRectangle(cornerRadius: 10).fill(Color.white))
-                                    .shadow(radius: 5)
+                                    
                             }
                         }
                     }
@@ -41,31 +39,38 @@ struct ComplaintRequestsView: View {
         }
 
     func fetchComplaints() {
-        db.collection("complaints").getDocuments { querySnapshot, error in
-            if let error = error {
-                print("Error fetching complaints: \(error.localizedDescription)")
-                return
-            }
-
-            complaints = querySnapshot?.documents.compactMap { document in
-                do {
-                    let complaint = try document.data(as: Complaint.self)
-                    return complaint
-                } catch {
-                    print("Error decoding complaint: \(error.localizedDescription)")
-                    return nil
+            // Fetch only complaints with status "Pending" from Firestore
+            db.collection("complaints").whereField("status", isEqualTo: "Pending").getDocuments { querySnapshot, error in
+                if let error = error {
+                    print("Error fetching complaints: \(error.localizedDescription)")
+                    return
                 }
-            } ?? []
+
+                complaints = querySnapshot?.documents.compactMap { document in
+                    do {
+                        let complaint = try document.data(as: Complaint.self)
+                        return complaint
+                    } catch {
+                        print("Error decoding complaint: \(error.localizedDescription)")
+                        return nil
+                    }
+                } ?? []
+            }
         }
-    }
     
     func markAsSolved(complaint: Complaint) {
             // Implement your logic to mark the complaint as solved in the database
             // For example, you might delete the document from Firestore
-            if let index = complaints.firstIndex(where: { $0.id == complaint.id }) {
-                complaints.remove(at: index)
-                deleteComplaintFromFirestore(complaintID: complaint.id!)
-            }
+        if let index = complaints.firstIndex(where: { $0.id == complaint.id }) {
+                    complaints[index].status = "Solved" // Update the local array
+            db.collection("complaints").document(complaint.id!).updateData(["status": "Solved"]) { error in
+                        if let error = error {
+                            print("Error updating complaint status in Firestore: \(error.localizedDescription)")
+                        } else {
+                            print("Complaint status updated successfully in Firestore.")
+                        }
+                    }
+                }
         }
     
     func deleteComplaintFromFirestore(complaintID: String) {
@@ -142,7 +147,12 @@ struct ComplaintRowView: View {
                 .font(.headline)
             Text("Name: \(complaint.userName)")
                 .foregroundColor(.secondary)
-        }
+        }.padding()
+            .frame(maxWidth: .infinity)
+            .background(Color("BgColor"))
+            .cornerRadius(10)
+            .shadow(radius: 5)
+            .padding(.horizontal)
     }
 }
 
