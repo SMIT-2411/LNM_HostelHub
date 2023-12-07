@@ -17,8 +17,13 @@ struct RegistrationView: View {
     @State private var rollNumber = ""
     @State private var contact = ""
     @State private var roomNo = "N/A"
+    @State private var hostel = "N/A"
     @State var isRegistrationSuccess = false
     @State private var showErrorAlert = false
+    
+    
+    @State private var isRegistering = false // Track registration process
+    @State private var showLoading = false // Show loading indicator
 
     
     @Environment(\.presentationMode) var presentationMode
@@ -38,6 +43,7 @@ struct RegistrationView: View {
                             .padding(.top)
                             .font(Montserrat.medium.font(size: 25))
                             .padding(.leading)
+                            
                         
                         Spacer()
                     }
@@ -50,6 +56,7 @@ struct RegistrationView: View {
                         .cornerRadius(50.0)
                         .shadow(color: Color.white.opacity(0.08), radius: 60, x: /*@START_MENU_TOKEN@*/0.0/*@END_MENU_TOKEN@*/, y: 16)
                         .padding(.vertical)
+                        .submitLabel(.done)
                     
                     HStack{
                         
@@ -68,6 +75,7 @@ struct RegistrationView: View {
                         .cornerRadius(50.0)
                         .shadow(color: Color.white.opacity(0.08), radius: 60, x: /*@START_MENU_TOKEN@*/0.0/*@END_MENU_TOKEN@*/, y: 16)
                         .padding(.vertical)
+                        .submitLabel(.done)
                     
                     HStack{
                         
@@ -86,6 +94,7 @@ struct RegistrationView: View {
                         .cornerRadius(50.0)
                         .shadow(color: Color.white.opacity(0.08), radius: 60, x: /*@START_MENU_TOKEN@*/0.0/*@END_MENU_TOKEN@*/, y: 16)
                         .padding(.vertical)
+                        .submitLabel(.done)
                     
                     
                     HStack{
@@ -107,6 +116,7 @@ struct RegistrationView: View {
                         .cornerRadius(50.0)
                         .shadow(color: Color.white.opacity(0.08), radius: 60, x: /*@START_MENU_TOKEN@*/0.0/*@END_MENU_TOKEN@*/, y: 16)
                         .padding(.vertical)
+                        .submitLabel(.done)
                     
                     HStack{
                         
@@ -127,10 +137,11 @@ struct RegistrationView: View {
                         .cornerRadius(50.0)
                         .shadow(color: Color.white.opacity(0.08), radius: 60, x: /*@START_MENU_TOKEN@*/0.0/*@END_MENU_TOKEN@*/, y: 16)
                         .padding(.vertical)
+                        .submitLabel(.done)
                     
                     HStack{
                         
-                        Text("Contact")
+                        Text("Contact (10 Digit Number)")
                             .padding(.top)
                             .font(Montserrat.medium.font(size: 25))
                             .padding(.leading)
@@ -148,6 +159,7 @@ struct RegistrationView: View {
                         .cornerRadius(50.0)
                         .shadow(color: Color.white.opacity(0.08), radius: 60, x: /*@START_MENU_TOKEN@*/0.0/*@END_MENU_TOKEN@*/, y: 16)
                         .padding(.vertical)
+                        .submitLabel(.done)
                     
                     
                     Button{
@@ -158,63 +170,58 @@ struct RegistrationView: View {
                             .padding()
                             .background(Color("blue2"))
                             .cornerRadius(50)
-                    }.alert(isPresented: $showErrorAlert) {
+                    }
+                    .disabled(isRegistering)
+                    .alert(isPresented: $showErrorAlert) {
                         Alert(
                             title: Text("Error"),
                             message: Text(alertMessage),
                             dismissButton: .default(Text("OK"))
                         )
-                    }.disabled(!isValidForm())
+                    }
+                    .disabled(!isValidForm())
                     
-                    //                Text(alertMessage)
-                    //                    .foregroundColor(.red)
-                    //                    .padding()
-                    //            }.background(
-                    //                NavigationLink("", destination: LoginView(), isActive: $isRegistrationSuccess)
-                    //                    .isDetailLink(false)
-                    //            )
+                    
                 }
-            }.navigationBarBackButtonHidden(false)
-        }.onTapGesture {
-            self.hideKeyboard()
+            }
         }
     }
     
     private func registerUser() {
         Auth.auth().createUser(withEmail: email, password: password) { result, error in
-            if let error = error {
-                self.alertMessage = error.localizedDescription
-                showErrorAlert = true
-
-            } else if let user = result?.user {
-                let db = Firestore.firestore()
-                let userDetailsRef = db.collection("user_details").document(user.uid)
-                
-                let userDetails = [
-                    "email": email,
-                    "studentID": user.uid,
-                    "name": name,
-                    "fatherName": fatherName,
-                    "rollNo": rollNumber,
-                    "contactNo": contact,
-                    "roomNo":roomNo
-                    // ... other details
-                ]
-                userDetailsRef.setData(userDetails)
-                { error in
-                    if let error = error {
-                        print("Error storing student data: \(error.localizedDescription)")
-                    } else {
-                        print("Registration and data storage successful")
-                        isRegistrationSuccess = true
+            DispatchQueue.main.async {
+                if let error = error {
+                    self.alertMessage = error.localizedDescription
+                    showErrorAlert = true
+                } else if let user = result?.user {
+                    let db = Firestore.firestore()
+                    let userDetailsRef = db.collection("user_details").document(user.uid)
+                    
+                    let userDetails = [
+                        "email": email,
+                        "studentID": user.uid,
+                        "name": name,
+                        "fatherName": fatherName,
+                        "rollNo": rollNumber,
+                        "contactNo": contact,
+                        "roomNo": roomNo,
+                        "hostel": hostel
+                        // ... other details
+                    ]
+                    userDetailsRef.setData(userDetails) { error in
+                        if let error = error {
+                            print("Error storing student data: \(error.localizedDescription)")
+                        } else {
+                            print("Registration and data storage successful")
+                            isRegistrationSuccess = true
+                        }
+                        self.presentationMode.wrappedValue.dismiss()
                     }
-                    self.presentationMode.wrappedValue.dismiss()
                 }
             }
         }
-        
-        
     }
+
     
     
     private func isValidForm() -> Bool {

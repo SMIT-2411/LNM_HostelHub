@@ -19,11 +19,14 @@ struct LoginView: View {
     @State private var isPresentedAdminDashboard = false
     @State private var isFirstLogin = false
     @State private var showErrorAlert = false
+    @State private var isPresentedLoginView = false
+    
+    @Environment(\.presentationMode) var presentationMode
+
 
     
     
     var body: some View {
-        NavigationView{
             ZStack{
                 Color("BgColor").edgesIgnoringSafeArea(.all)
                 VStack{
@@ -133,7 +136,10 @@ struct LoginView: View {
             }.onTapGesture {
                 self.hideKeyboard()
             }
-        }.navigationBarBackButtonHidden(false)
+            .onAppear {
+                resetState()
+            }
+        
             
     }
     
@@ -142,6 +148,8 @@ struct LoginView: View {
     
     func signInWithGoogle()
     {
+        isPresentedAdminDashboard = false
+        isPresentedUserDashboard = false
         // get app client id
         guard let clientID = FirebaseApp.app()?.options.clientID else {return}
         
@@ -176,6 +184,7 @@ struct LoginView: View {
                 
                 
                 if let user = Auth.auth().currentUser {
+                    
                     checkAdmin(user: user)
                 }
                 
@@ -187,6 +196,9 @@ struct LoginView: View {
     
     
     private func checkAdmin(user: User) {
+        isPresentedUserDashboard = false
+        isPresentedAdminDashboard = false
+        
         let db = Firestore.firestore()
         let userDocRef = db.collection("user_details").document(user.uid)
         
@@ -238,8 +250,10 @@ struct LoginView: View {
     private func checkRoleAndNavigate(isAdmin: Bool) {
         if isAdmin {
             isPresentedAdminDashboard = true
+            isPresentedUserDashboard = false
         } else {
             isPresentedUserDashboard = true
+            isPresentedAdminDashboard = false
         }
     }
     
@@ -278,6 +292,18 @@ struct LoginView: View {
     }
     
     //email and password login ends here
+    
+    
+    
+    private func resetState() {
+        email = ""
+        password = ""
+        alertMessage = ""
+        isAdmin = false
+        isUser = false
+        isFirstLogin = false
+        showErrorAlert = false
+    }
     
 }
 

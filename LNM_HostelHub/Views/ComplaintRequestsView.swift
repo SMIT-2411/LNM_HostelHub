@@ -16,31 +16,29 @@ struct ComplaintRequestsView: View {
     var db = Firestore.firestore()
 
     var body: some View {
-        NavigationView {
-            List {
-                ForEach(complaints, id: \.id) { complaint in
-                    NavigationLink(destination: {
-                                           ComplaintDetailsView(complaint: complaint, onMarkAsSolved: {
-                                               markAsSolved(complaint: complaint)
-                                           }, onDismiss: {
-                                               selectedComplaint = nil
-                                           })
-                    }) {
-                        HStack {
-                            Text("Room No: \(complaint.roomNo)").padding()
-                            Text("Name: \(complaint.userName)").padding()
+            NavigationView {
+                ZStack{
+                    Color("BgColor").edgesIgnoringSafeArea(.all)
+                    List {
+                        ForEach(complaints, id: \.id) { complaint in
+                            NavigationLink(destination: ComplaintDetailsView(complaint: complaint, onMarkAsSolved: {
+                                markAsSolved(complaint: complaint)
+                            }, onDismiss: {
+                                selectedComplaint = nil
+                            })) {
+                                ComplaintRowView(complaint: complaint)
+                                    .padding()
+                                    .background(RoundedRectangle(cornerRadius: 10).fill(Color.white))
+                                    .shadow(radius: 5)
+                            }
                         }
-                        .padding()
-                        .border(Color.gray, width: 1)
                     }
+                    .onAppear(perform: fetchComplaints)
+                    .navigationTitle("Complaint Requests")
+                    .navigationBarBackButtonHidden(true)
                 }
             }
-            .onAppear(perform: fetchComplaints)
-            .navigationTitle("Complaint Requests")
-            .navigationBarBackButtonHidden(true)
-            
         }
-    }
 
     func fetchComplaints() {
         db.collection("complaints").getDocuments { querySnapshot, error in
@@ -88,31 +86,37 @@ struct ComplaintDetailsView: View {
 
 
     var body: some View {
-        VStack {
-            Text("Complaint Type: \(complaint.complaintType)")
-            Text("Details: \(complaint.complaintDetails)")
-            Text("User Name: \(complaint.userName)")
-            Text("Hostel: \(complaint.hostel)")
-            Text("Date: \(formattedDate(complaint.preferredDate))")
-            Text("Time From: \(formattedTime(complaint.preferredTimeFrom))")
-            Text("Time To: \(formattedTime(complaint.preferredTimeTo))")
+            VStack(spacing: 16) {
+                Text("Complaint Type:")
+                    .font(.title)
+                    
+                Text("\(complaint.complaintType)")
+                    .fontWeight(.semibold)
+                
+                Text("Details: \(complaint.complaintDetails)")
+                    .multilineTextAlignment(.center)
+                Text("User Name: \(complaint.userName)")
+                Text("Hostel: \(complaint.hostel)")
+                Text("Date: \(formattedDate(complaint.preferredDate))")
+                Text("Time From: \(formattedTime(complaint.preferredTimeFrom))")
+                Text("Time To: \(formattedTime(complaint.preferredTimeTo))")
 
-            Button("Mark as Solved") {
-                // Implement your logic to mark the complaint as solved
-                onMarkAsSolved()
+                Button("Mark as Solved") {
+                    onMarkAsSolved()
+                }
+                .padding()
+                .background(RoundedRectangle(cornerRadius: 10).fill(Color.blue))
+                .foregroundColor(.white)
+
+                Spacer()
             }
             .padding()
-            .border(Color.blue, width: 1)
-            .padding(.top, 20)
-
-            Spacer()
+            .background(RoundedRectangle(cornerRadius: 15).fill(Color.white).frame(width: 380))
+            .shadow(radius: 5)
+            .onTapGesture {
+                onDismiss()
+            }
         }
-        .padding()
-        .onTapGesture {
-            // Handle tap gesture to dismiss the sheet
-            onDismiss()
-        }
-    }
     
    
 
@@ -126,6 +130,19 @@ struct ComplaintDetailsView: View {
         let formatter = DateFormatter()
         formatter.timeStyle = .short
         return formatter.string(from: time)
+    }
+}
+
+struct ComplaintRowView: View {
+    var complaint: Complaint
+
+    var body: some View {
+        VStack(alignment: .leading, spacing: 8) {
+            Text("Room No: \(complaint.roomNo)")
+                .font(.headline)
+            Text("Name: \(complaint.userName)")
+                .foregroundColor(.secondary)
+        }
     }
 }
 

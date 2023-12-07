@@ -13,11 +13,18 @@ struct BookingRequestsView: View {
     @State private var bookingRequests: [Booking] = []
 
     var body: some View {
-        List(bookingRequests) { booking in
-            BookingRequestCell(booking: booking)
-        }
-        .onAppear {
-            fetchBookingRequests()
+        VStack{
+            Text("Booking Request")
+                .font(.largeTitle)
+                .fontWeight(.bold)
+                .padding()
+            
+            List(bookingRequests) { booking in
+                BookingRequestCell(booking: booking)
+            }
+            .onAppear {
+                fetchBookingRequests()
+            }
         }
     }
 
@@ -51,20 +58,26 @@ struct BookingRequestCell: View {
     @State private var showBookingDetails: Bool = false
 
     var body: some View {
-        HStack {
-            Text(booking.studentName)
-            
-            Spacer()
-            
-            Spacer()
-            
-            Button("Details") {
-                showBookingDetails = true
-            }
-            .foregroundColor(.blue)
+        ZStack{
+            Color("BgColor").edgesIgnoringSafeArea(.all)
 
-            NavigationLink(destination: BookingRequestsExtView(booking: booking), isActive: $showBookingDetails) {
-                EmptyView()
+            VStack{
+                HStack {
+                    Text(booking.studentName)
+                    
+                    Spacer()
+                    
+                    Spacer()
+                    
+                    Button("Details") {
+                        showBookingDetails = true
+                    }
+                    .foregroundColor(.blue)
+                    
+                    NavigationLink(destination: BookingRequestsExtView(booking: booking), isActive: $showBookingDetails) {
+                        EmptyView()
+                    }
+                }
             }
         }
     }

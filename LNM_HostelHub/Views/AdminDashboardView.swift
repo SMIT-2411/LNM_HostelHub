@@ -12,31 +12,34 @@ import FirebaseFirestore
 
 struct AdminDashboardView: View {
     @State private var showLogin = false
+   // @State private var isPresentedLoginView = false
     
-   @Environment(\.presentationMode) var presentationMode
+    @Environment(\.presentationMode) var presentationMode
     
     
     var body: some View {
-            TabView {
-                BookingRequestsView()
-                    .tabItem {
-                        Label("Booking Requests", systemImage: "envelope")
-                    }
-                    .tag(0)
-
-                ComplaintRequestsView()
-                    .tabItem {
-                        Label("Complaint Requests", systemImage: "flag")
-                    }
-                    .tag(1)
-            } .navigationBarTitle("Admin Dashboard", displayMode: .inline)
-            .navigationBarBackButtonHidden(true) // Hide the default back button
-            .navigationBarItems(trailing:
-                                    Button("Sign Out") {
-                signOut()
-            }
-            )
+        TabView {
+            BookingRequestsView()
+                .tabItem {
+                    Label("Booking Requests", systemImage: "envelope")
+                }
+                .tag(0)
+            
+            ComplaintRequestsView()
+                .tabItem {
+                    Label("Complaint Requests", systemImage: "flag")
+                }
+                .tag(1)
         }
+        .navigationBarBackButtonHidden(true) // Hide the default back button
+        .navigationBarItems(trailing:
+                                Button("Sign Out") {
+            signOut()
+            
+        }
+        )
+        
+    }
     
     private func signOut() {
         do {
@@ -44,7 +47,7 @@ struct AdminDashboardView: View {
             showLogin = true
             
             presentationMode.wrappedValue.dismiss()
-
+            
             
             // Handle successful sign-out, for example, navigate to the login screen
         } catch {

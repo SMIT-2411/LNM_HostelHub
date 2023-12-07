@@ -14,87 +14,100 @@ struct UserDetailsView: View {
     @State private var fatherName: String = ""
     @State private var contact: String = ""
     @State private var rollNumber: String = ""
+    @State private var hostel: String = ""
     @State private var roomNumber: String = ""
     @State private var animationsRunning = false
     
     
     var body: some View {
-        ZStack{
-            
-            VStack {
-                Text("User Details")
-                    .font(.largeTitle)
-                    .fontWeight(.bold)
+        ScrollView{
+            ZStack{
+                
+                VStack {
+                    Text("User Details")
+                        .font(.largeTitle)
+                        .fontWeight(.bold)
+                        .padding()
+                    
+                    
+                    Image(systemName: "person.and.background.dotted")
+                        .font(Montserrat.bold.font(size: 100))
+                        .symbolEffect(.bounce.up.byLayer,options: .repeating, value: animationsRunning)
+                    
+                    
+                    
+                    // Display user details from Firebase
+                    Group {
+                        DetailRow(title: "Name", value: userName)
+                            .foregroundColor(.white)
+                            .padding()
+                            .font(Montserrat.semibold.font(size: 20))
+                            .frame(maxWidth: .infinity)
+                            .background(Color("blue2"))
+                            .cornerRadius(50.0)
+                            .shadow(color: Color.white.opacity(0.08), radius: 60, x: /*@START_MENU_TOKEN@*/0.0/*@END_MENU_TOKEN@*/, y: 16)
+                        
+                        
+                        DetailRow(title: "Father's Name", value: fatherName)
+                            .foregroundColor(.white)
+                            .padding()
+                            .font(Montserrat.semibold.font(size: 20))
+                            .frame(maxWidth: .infinity)
+                            .background(Color("blue2"))
+                            .cornerRadius(50.0)
+                            .shadow(color: Color.white.opacity(0.08), radius: 60, x: /*@START_MENU_TOKEN@*/0.0/*@END_MENU_TOKEN@*/, y: 16)
+                        
+                        
+                        
+                        DetailRow(title: "Contact", value: contact)
+                            .foregroundColor(.white)
+                            .padding()
+                            .font(Montserrat.semibold.font(size: 20))
+                            .frame(maxWidth: .infinity)
+                            .background(Color("blue2"))
+                            .cornerRadius(50.0)
+                            .shadow(color: Color.white.opacity(0.08), radius: 60, x: /*@START_MENU_TOKEN@*/0.0/*@END_MENU_TOKEN@*/, y: 16)
+                        
+                        DetailRow(title: "Roll Number", value: rollNumber)
+                            .foregroundColor(.white)
+                            .padding()
+                            .font(Montserrat.semibold.font(size: 20))
+                            .frame(maxWidth: .infinity)
+                            .background(Color("blue2"))
+                            .cornerRadius(50.0)
+                            .shadow(color: Color.white.opacity(0.08), radius: 60, x: /*@START_MENU_TOKEN@*/0.0/*@END_MENU_TOKEN@*/, y: 16)
+                        
+                        DetailRow(title: "Hostel", value: hostel)
+                            .foregroundColor(.white)
+                            .padding()
+                            .font(Montserrat.semibold.font(size: 20))
+                            .frame(maxWidth: .infinity)
+                            .background(Color("blue2"))
+                            .cornerRadius(50.0)
+                            .shadow(color: Color.white.opacity(0.08), radius: 60, x: /*@START_MENU_TOKEN@*/0.0/*@END_MENU_TOKEN@*/, y: 16)
+                        
+                        DetailRow(title: "Room Number", value: roomNumber)
+                            .foregroundColor(.white)
+                            .padding()
+                            .font(Montserrat.semibold.font(size: 20))
+                            .frame(maxWidth: .infinity)
+                            .background(Color("blue2"))
+                            .cornerRadius(50.0)
+                            .shadow(color: Color.white.opacity(0.08), radius: 60, x: /*@START_MENU_TOKEN@*/0.0/*@END_MENU_TOKEN@*/, y: 16)
+                        
+                        
+                        // Add more DetailRow components for additional user details
+                    }
                     .padding()
-                
-                
-                Image(systemName: "person.and.background.dotted")
-                    .font(Montserrat.bold.font(size: 100))
-                    .symbolEffect(.bounce.up.byLayer,options: .repeating, value: animationsRunning)
-                
-                                
-                
-                // Display user details from Firebase
-                Group {
-                    DetailRow(title: "Name", value: userName)
-                        .foregroundColor(.white)
-                        .padding()
-                        .font(.title)
-                        .frame(maxWidth: .infinity)
-                        .background(Color("blue2"))
-                        .cornerRadius(50.0)
-                        .shadow(color: Color.white.opacity(0.08), radius: 60, x: /*@START_MENU_TOKEN@*/0.0/*@END_MENU_TOKEN@*/, y: 16)
-                        
-                        
-                    DetailRow(title: "Father's Name", value: fatherName)
-                        .foregroundColor(.white)
-                        .padding()
-                        .font(.title)
-                        .frame(maxWidth: .infinity)
-                        .background(Color("blue2"))
-                        .cornerRadius(50.0)
-                        .shadow(color: Color.white.opacity(0.08), radius: 60, x: /*@START_MENU_TOKEN@*/0.0/*@END_MENU_TOKEN@*/, y: 16)
-                        
-                        
                     
-                    DetailRow(title: "Contact", value: contact)
-                        .foregroundColor(.white)
-                    .padding()
-                    .font(.title)
-                    .frame(maxWidth: .infinity)
-                    .background(Color("blue2"))
-                    .cornerRadius(50.0)
-                    .shadow(color: Color.white.opacity(0.08), radius: 60, x: /*@START_MENU_TOKEN@*/0.0/*@END_MENU_TOKEN@*/, y: 16)
-                    
-                    DetailRow(title: "Roll Number", value: rollNumber)
-                        .foregroundColor(.white)
-                        .padding()
-                        .font(.title)
-                        .frame(maxWidth: .infinity)
-                        .background(Color("blue2"))
-                        .cornerRadius(50.0)
-                        .shadow(color: Color.white.opacity(0.08), radius: 60, x: /*@START_MENU_TOKEN@*/0.0/*@END_MENU_TOKEN@*/, y: 16)
-                       
-                    DetailRow(title: "Room Number", value: roomNumber)
-                        .foregroundColor(.white)
-                        .padding()
-                        .font(.title)
-                        .frame(maxWidth: .infinity)
-                        .background(Color("blue2"))
-                        .cornerRadius(50.0)
-                        .shadow(color: Color.white.opacity(0.08), radius: 60, x: /*@START_MENU_TOKEN@*/0.0/*@END_MENU_TOKEN@*/, y: 16)
-                        
-                    
-                    // Add more DetailRow components for additional user details
+                    Spacer()
                 }
-                .padding()
+                .onAppear {
+                    // Load user details from Firebase and update the state properties
+                    animationsRunning.toggle()
+                    fetchUserDetails()
+                }
                 
-                Spacer()
-            }
-            .onAppear {
-                // Load user details from Firebase and update the state properties
-                animationsRunning.toggle()
-                fetchUserDetails()
             }
         }
     }
@@ -114,6 +127,7 @@ struct UserDetailsView: View {
                 fatherName = data?["fatherName"] as? String ?? ""
                 contact = data?["contactNo"] as? String ?? ""
                 rollNumber = data?["rollNo"] as? String ?? ""
+                hostel = data?["hostel"] as? String ?? ""
                 roomNumber = data?["roomNo"] as? String ?? ""
                 // Update other properties as needed
             } else {

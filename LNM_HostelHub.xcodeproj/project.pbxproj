@@ -7,12 +7,14 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		3A63AB2D2B1A23E70061B362 /* LeaveFormView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3A63AB2C2B1A23E70061B362 /* LeaveFormView.swift */; };
 		3A6401EB2B0B65B4005224B0 /* UserDetailsFormView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3A6401EA2B0B65B4005224B0 /* UserDetailsFormView.swift */; };
 		3A665D922B14D52700B37183 /* FontManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3A665D912B14D52600B37183 /* FontManager.swift */; };
 		3A665D952B14D60500B37183 /* Card.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3A665D942B14D60500B37183 /* Card.swift */; };
 		3A665D982B14D66600B37183 /* CircleView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3A665D972B14D66600B37183 /* CircleView.swift */; };
 		3A665D9A2B14D68900B37183 /* CardView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3A665D992B14D68900B37183 /* CardView.swift */; };
 		3A665D9C2B14D6AF00B37183 /* MainView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3A665D9B2B14D6AF00B37183 /* MainView.swift */; };
+		3A8010CE2B21180D00F17495 /* LeaveFormRequestView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3A8010CD2B21180D00F17495 /* LeaveFormRequestView.swift */; };
 		3A80E4192AF919D900B852E8 /* FirebaseAnalytics in Frameworks */ = {isa = PBXBuildFile; productRef = 3A80E4182AF919D900B852E8 /* FirebaseAnalytics */; };
 		3A80E41B2AF919D900B852E8 /* FirebaseAuth in Frameworks */ = {isa = PBXBuildFile; productRef = 3A80E41A2AF919D900B852E8 /* FirebaseAuth */; };
 		3A80E41D2AF919D900B852E8 /* FirebaseDatabase in Frameworks */ = {isa = PBXBuildFile; productRef = 3A80E41C2AF919D900B852E8 /* FirebaseDatabase */; };
@@ -69,12 +71,14 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		3A63AB2C2B1A23E70061B362 /* LeaveFormView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LeaveFormView.swift; sourceTree = "<group>"; };
 		3A6401EA2B0B65B4005224B0 /* UserDetailsFormView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserDetailsFormView.swift; sourceTree = "<group>"; };
 		3A665D912B14D52600B37183 /* FontManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FontManager.swift; sourceTree = "<group>"; };
 		3A665D942B14D60500B37183 /* Card.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Card.swift; sourceTree = "<group>"; };
 		3A665D972B14D66600B37183 /* CircleView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CircleView.swift; sourceTree = "<group>"; };
 		3A665D992B14D68900B37183 /* CardView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CardView.swift; sourceTree = "<group>"; };
 		3A665D9B2B14D6AF00B37183 /* MainView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainView.swift; sourceTree = "<group>"; };
+		3A8010CD2B21180D00F17495 /* LeaveFormRequestView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LeaveFormRequestView.swift; sourceTree = "<group>"; };
 		3A80E4242AF91A3F00B852E8 /* Booking.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Booking.swift; sourceTree = "<group>"; };
 		3A80E4262AF91A6200B852E8 /* BookingRequest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BookingRequest.swift; sourceTree = "<group>"; };
 		3A80E4282AF91A7A00B852E8 /* Complaint.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Complaint.swift; sourceTree = "<group>"; };
@@ -244,6 +248,8 @@
 				3A80E4402AF91EBA00B852E8 /* ComplaintView.swift */,
 				3AE4775F2B0C851A00EF98A6 /* UserDetailsView.swift */,
 				3AF1A8F02B128B9000DC57AF /* BookingRequestsExtView.swift */,
+				3A63AB2C2B1A23E70061B362 /* LeaveFormView.swift */,
+				3A8010CD2B21180D00F17495 /* LeaveFormRequestView.swift */,
 			);
 			path = Views;
 			sourceTree = "<group>";
@@ -436,6 +442,8 @@
 				3A80E4412AF91EBA00B852E8 /* ComplaintView.swift in Sources */,
 				3A80E4252AF91A3F00B852E8 /* Booking.swift in Sources */,
 				3A80E4452AF91EE700B852E8 /* UserDashboardView.swift in Sources */,
+				3A63AB2D2B1A23E70061B362 /* LeaveFormView.swift in Sources */,
+				3A8010CE2B21180D00F17495 /* LeaveFormRequestView.swift in Sources */,
 				3AE9B8A82AF91178007DC90C /* LNM_HostelHubApp.swift in Sources */,
 				3A665D922B14D52700B37183 /* FontManager.swift in Sources */,
 				3A80E43B2AF91E9000B852E8 /* AvailableRoomsView.swift in Sources */,
