@@ -6,7 +6,7 @@
 
 <h2>Project Screenshots:</h2>
 
-<img src="https://i.postimg.cc/XNcdJK3x/temp-Imageh-OXb-Go.jpg" alt="project-screenshot" width="425" height="850/"> <img src="https://i.postimg.cc/Sx5z5D7Q/temp-Imagexoyd-EE.jpg" alt="project-screenshot" width="425" height="850/">
+<img src="https://i.postimg.cc/XNcdJK3x/temp-Imageh-OXb-Go.jpg" alt="project-screenshot" width="370" height="850/"> <img src="https://i.postimg.cc/Sx5z5D7Q/temp-Imagexoyd-EE.jpg" alt="project-screenshot" width="370" height="850/">
 
 
 
