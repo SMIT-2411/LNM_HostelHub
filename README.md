@@ -6,15 +6,15 @@
 
 <h2>Project Screenshots:</h2>
 
-<img src="https://i.postimg.cc/XNcdJK3x/temp-Imageh-OXb-Go.jpg" alt="project-screenshot" width="370" height="850/"> <img src="https://i.postimg.cc/Sx5z5D7Q/temp-Imagexoyd-EE.jpg" alt="project-screenshot" width="370" height="850/">
+<img src="https://i.postimg.cc/XNcdJK3x/temp-Imageh-OXb-Go.jpg" alt="project-screenshot" width="390" height="800/"> <img src="https://i.postimg.cc/Sx5z5D7Q/temp-Imagexoyd-EE.jpg" alt="project-screenshot" width="390" height="800/">
 
 
 
-<img src="https://i.postimg.cc/MGQj8Vd7/temp-Imagefe5jji.jpg" alt="project-screenshot" width="425" height="850/"> <img src="https://i.postimg.cc/vZDV3pnS/temp-Image-Xz-Vx-WJ.jpg" alt="project-screenshot" width="425" height="850/">
+<img src="https://i.postimg.cc/MGQj8Vd7/temp-Imagefe5jji.jpg" alt="project-screenshot" width="390" height="800/"> <img src="https://i.postimg.cc/vZDV3pnS/temp-Image-Xz-Vx-WJ.jpg" alt="project-screenshot" width="390" height="800/">
 
 
 
-<img src="https://i.postimg.cc/YCgprRBC/temp-Image-Fk-Bt-Ai.jpg" alt="project-screenshot" width="425" height="850/"> <img src="https://i.postimg.cc/3JtGjKkv/temp-Imagen-L1g-NV.jpg" alt="project-screenshot" width="425" height="850/">
+<img src="https://i.postimg.cc/YCgprRBC/temp-Image-Fk-Bt-Ai.jpg" alt="project-screenshot" width="390" height="800/"> <img src="https://i.postimg.cc/3JtGjKkv/temp-Imagen-L1g-NV.jpg" alt="project-screenshot" width="390" height="800/">
 
 
 
