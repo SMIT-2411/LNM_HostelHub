@@ -13,52 +13,50 @@ struct BookingRequestsView: View {
     @State private var bookingRequests: [Booking] = []
 
     @State private var isAddRoomMenuVisible: Bool = false
+    @State private var showAddRoomSheet: Bool = false
+
 
     var body: some View {
-        NavigationView {
-                VStack {
-                    Text("Booking Request")
-                        .font(.largeTitle)
-                        .fontWeight(.bold)
-                        .padding()
-                    
+            NavigationView {
+                ZStack {
                     List(bookingRequests) { booking in
                         BookingRequestCell(booking: booking)
                     }
                     .onAppear {
                         fetchBookingRequests()
                     }
-//                    Spacer()
-//                    VStack {
-//                        // Your existing content
-//
-//                        Text("Add Room")
-//                            .onTapGesture {
-//                                isAddRoomMenuVisible.toggle()
-//                            }
-//                            .foregroundColor(.blue)
-//                            .padding()
-//                            .background(Color.white)
-//                            .clipShape(Circle())
-//                            .shadow(radius: 5)
-//                            .padding()
-//                    }
-                }
-                
-                
-               
-            
-                
-                if isAddRoomMenuVisible {
-                    AddRoomMenuView { addedRoom in
-                        // Handle addedRoom
-                        addRoomToHostel(hostelId: addedRoom.hostelId, roomNumber: addedRoom.roomNumber)
-                        isAddRoomMenuVisible.toggle()
-                        fetchBookingRequests() // Refresh booking requests after adding room
+
+                    VStack {
+                        Spacer()
+
+                        HStack {
+                            Spacer()
+
+                            Button(action: {
+                                showAddRoomSheet = true
+                            }) {
+                                Image(systemName: "plus.circle.fill")
+                                    .resizable()
+                                    .frame(width: 50, height: 50)
+                                    .foregroundColor(.white)
+                                    .padding()
+                                    .background(Color.blue)
+                                    .clipShape(Circle())
+                                    .shadow(radius: 5)
+                            }
+                            .padding()
+                            .sheet(isPresented: $showAddRoomSheet) {
+                                AddRoomMenuView { addedRoom in
+                                    addRoomToHostel(hostelId: addedRoom.hostelId, roomNumber: addedRoom.roomNumber)
+                                    showAddRoomSheet = false
+                                }
+                            }
+
+                            Spacer()
+                        }
                     }
                 }
-            }
-        
+            }.navigationTitle("Booking Requests")
         }
 
 
@@ -125,6 +123,7 @@ struct BookingRequestsView: View {
                 .pickerStyle(MenuPickerStyle())
 
                 TextField("Enter Room Number", text: $roomNumber)
+                    .keyboardType(.numberPad)
                     .padding()
                     .textFieldStyle(RoundedBorderTextFieldStyle())
 
